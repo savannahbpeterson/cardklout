@@ -1,0 +1,37 @@
+.header_container {
+    display: flex;
+    justify-content: space-between;
+}
+.cardklout_title {
+    /* display: flex; */
+    padding-left: 25px;
+    margin-bottom: -10px;
+}
+.under_title {
+    display: flex;
+    align-self: flex-end;
+    padding-left: 25px;
+    margin-top: .0;
+    font-weight: lighter;
+    color: lightgray;
+    font-size: 30px;
+    line-height: initial;
+}
+.search_bar{
+   height: 15px;
+   background-color: rgba(129, 122, 122, 0.096);
+   margin-top: 30px;
+   padding-left: 50px;
+   width: 200px;
+}
+.AddCard_button {
+    height: 35px;
+    font-family: Arial Narrow, sans-serif;
+    font-weight: bolder;
+    font-stretch: ultra-expanded;
+    box-shadow: 1px 1px 1px #888888;
+    color: rgb(97, 155, 231);
+    background-color: rgba(129, 122, 122, 0.096);
+    margin-top: 10px;
+    padding-left: 20px;
+}

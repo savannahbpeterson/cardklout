@@ -4,7 +4,8 @@ const bodyParser = require('body-parser')
 const massive = require('massive');
 const session = require('express-session')
 
-const authController = require('./controllers/authController')
+const authCtrl = require('./controllers/authController')
+const UDCtrl = require('./controllers/userDataController')
 
 const app = express()
 
@@ -23,10 +24,12 @@ app.use(session({
 }))
 
 //AUTHENTICATION
-app.post("/auth/login", authController.login);
+app.post("/auth/login", authCtrl.login);
 
-//users data
+//USERS DATA (CARDS)
 // app.get('/api/logout', authController.getUser)
+app.get('/home/getUserCards', UDCtrl.getUserCards);
+
 
 app.listen(SERVER_PORT, () => {
     console.log(`Someone is eaves dropping on port ${SERVER_PORT}`)

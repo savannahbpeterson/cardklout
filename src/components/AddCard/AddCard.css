@@ -1,0 +1,22 @@
+.dropzone_container{
+    display: flex;
+}
+.dropzone_front{
+    display: flex;
+    position: relative;
+    width: 150px;
+    height: 220px;
+    border-width: 2px;
+    border-color: rgba(209, 13, 13, 0.308);
+    /* background-color: green; */
+}
+.dropzone_back{
+    display: flex;
+    position: relative;
+    width: 150px;
+    height: 220px;
+    border-width: 2px;
+    border-color: rgba(209, 13, 13, 0.308);
+    margin-left: 10px;
+    /* background-color: green; */
+}

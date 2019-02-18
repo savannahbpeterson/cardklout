@@ -6,6 +6,8 @@ const session = require('express-session')
 
 const authCtrl = require('./controllers/authController')
 const UDCtrl = require('./controllers/userDataController')
+const AddCtrl = require('./controllers/addCardController')
+const amazonCrtl = require('./controllers/amazonController')
 
 const app = express()
 
@@ -20,16 +22,21 @@ app.use(bodyParser.json())
 app.use(session({
   secret: SESSION_SECRET,
   resave: false,
-  saveUninitialized: false
+  saveUninitialized: false,
+  maxAge: null
 }))
 
 //AUTHENTICATION
 app.post("/auth/login", authCtrl.login);
 
 //USERS DATA (CARDS)
-// app.get('/api/logout', authController.getUser)
 app.get('/home/getUserCards', UDCtrl.getUserCards);
 
+//ADD CARD
+app.post('/addCard/addNewCard', AddCtrl.addNew)
+
+//IMAGES
+app.get('/sign-s3', amazonCrtl.awsS3)
 
 app.listen(SERVER_PORT, () => {
     console.log(`Someone is eaves dropping on port ${SERVER_PORT}`)

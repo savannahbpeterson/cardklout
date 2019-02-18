@@ -3,7 +3,7 @@ import './Auth.css'
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { updateUser } from './../../ducks/reducer'
-import bootstrap from 'react-bootstrap'
+// import bootstrap from 'react-bootstrap'
 
 class Auth extends Component {
     constructor(props) {
@@ -91,8 +91,8 @@ class Auth extends Component {
                                             </div>
                                             <button type="submit" 
                                                     class="btn btn-success btn-block" 
-                                                    style={{ marginTop: '10px', color: 'white', width: '70px',
-                                                    backgroundColor: 'black', border: 0, backgroundColor: 'rgb(27, 144, 221)' }} 
+                                                    style={{ marginTop: '10px', width: '70px',
+                                                    backgroundColor: 'black', border: 0, color: 'rgb(27, 144, 221)' }} 
                                                     onClick={this.login}>LOG IN</button>
                                         </form>
                                     </div>

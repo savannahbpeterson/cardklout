@@ -1,12 +1,14 @@
 //initial state
 const initialState = {
     id: 0,
-    username: ''
+    username: '',
+    user: {}
 }
 
 //constants
 const UPDATE_USER = "UPDATE_USER"
 const CLEAR_USER = "CLEAR_USER"
+const USER_DATA = "USER_DATA"
 
 //action creators
 export function updateUser(userobj) {
@@ -19,6 +21,12 @@ export function clearUser() {
     return {
       type: CLEAR_USER
     }
+}
+export function showUser (userData) {
+  return {
+      type: USER_DATA,
+      payload: userData
+  }
 }
 //reducer function
 export default function reducer(state = initialState, action) {
@@ -33,6 +41,11 @@ export default function reducer(state = initialState, action) {
           username: "",
         };
         return { ...state, ...user };
+
+        case USER_DATA:
+        return {...state, user: action.payload}
+
+
       default:
         return state;
     }

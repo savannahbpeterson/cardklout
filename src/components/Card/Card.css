@@ -1,0 +1,8 @@
+.cardInfo{
+    display: flex;
+    background-color: rgb(230, 227, 227);
+    border: 1px;
+}
+.id{
+    margin-right: 10px
+}

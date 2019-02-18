@@ -15,3 +15,23 @@ create table player_cards(
     condition varchar(10) not null,
     user_id int references cardklout_users(id) 
 );
+
+insert into player_cards(
+    brand,
+    player_name,
+    sport,
+    team,
+    manufacture,
+    condition,
+    user_id,
+    year
+)values(
+    'Classics Football',
+    'Raymond Berry',
+    'Football',
+    'Baltimore Colts',
+    'Panini',
+    'AVERAGE',
+    '5',
+    '2018'
+);

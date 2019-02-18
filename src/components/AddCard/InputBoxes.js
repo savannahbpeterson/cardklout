@@ -7,7 +7,7 @@ function InputBoxes(props) {
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
             {val.edit ? <div>{val.name}
                 <input onChange={(e) => props.updateFn(val.name, e.target.value)} />
-                <button style={{fontSize: '8px'}} onClick={() => props.submitBtn(val.name)}>SUBMIT</button></div>
+                <button style={{fontSize: '16px', color: 'rgb(27, 144, 221)', fontWeight: 'bold'}} onClick={() => props.submitBtn(val.name)}>DONE</button></div>
                 :
                 <div>
                     {val.name} {val.value}

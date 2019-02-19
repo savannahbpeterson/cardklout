@@ -27,6 +27,7 @@ app.use(session({
 }))
 
 //AUTHENTICATION
+app.get('/api/user', authCtrl.getUser)
 app.post("/auth/login", authCtrl.login);
 
 //USERS DATA (CARDS)

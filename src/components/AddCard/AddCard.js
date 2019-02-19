@@ -3,8 +3,8 @@ import './AddCard.css'
 import axios from 'axios'
 import { v4 as photoUrlString } from 'uuid'
 import { Link } from 'react-router-dom'
-import Dropzone from 'react-dropzone';
-import Spinner from 'react-spinkit';
+// import Dropzone from 'react-dropzone';
+// import Spinner from 'react-spinkit';
 import InputBoxes from './InputBoxes';
 // import ImportImage from './ImportImage';
 
@@ -24,7 +24,8 @@ class AddCard extends Component {
 
             isUploading: false,
             images: [],
-            files: []
+            files: [],
+            url: ''
         }
     }
     //THIS IS THE EDIT CARD AND SUBMIT FUNCTIONALLITY
@@ -58,12 +59,11 @@ class AddCard extends Component {
     }
 
     //images
-    getSignedRequest = ([file]) => {
-        this.setState({ isUploading: true })
-        const fileName = `${photoUrlString()}-${file.name.replace(/\s/g, '-')}`
+    getSignedRequest = (e) => {
+        let file = e.target.files[0];
         axios.get('/sign-s3', {
             params: {
-                'file-name': fileName,
+                'file-name': file.name,
                 'file-type': file.type
             }
         }).then((response) => {
@@ -90,14 +90,10 @@ class AddCard extends Component {
 
         axios.put(signedRequest, file, options)
             .then(response => {
-                this.setState({ isUploading: false, url: url })
-                // THEN DO SOMETHING WITH THE URL. SEND TO DB USING POST REQUEST OR SOMETHING
-                // this.handleUpdate({ what: 'photo', val: url })
+                this.setState({url})
             })
             .catch(err => {
-                this.setState({
-                    isUploading: false
-                })
+
                 if (err.response.status === 403) {
                     alert('Your request for a signed URL failed with a status 403. Double check the CORS configuration and bucket policy in the README. You also will want to double check your AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY in your .env and ensure that they are the same as the ones that you created in the IAM dashboard. You may need to generate new keys\n' + err.stack)
                 } else {
@@ -129,50 +125,9 @@ class AddCard extends Component {
         const { isUploading } = this.state
         return (
             <div className="AddCard_page">
-                {/* <div className="dropzone_container"> */}
-                    <Dropzone
-                        onDropAccepted={this.getSignedRequest}
-                        style={{
-                            position: 'relative',
-                            width: 200,
-                            height: 200,
-                            borderWidth: 7,
-                            marginTop: 20,
-                            borderColor: 'rgb(102, 102, 102)',
-                            borderStyle: 'dashed',
-                            borderRadius: 5,
-                            display: 'flex',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            fontSize: 28,
-                            backgroundColor: 'red'
-                        }}
-                        accept='image/*'
-                        multiple={false} >
-                        {dropzoneProps => {
-                            return (
-                                <div>
-                                    {isUploading
-                                        ? <Spinner name="chasing-dots" color="blue" />
-                                        : <h3
-                                        >Drop File or Click Here</h3>
-                                    }
-                                </div>
-                            );
-                        }}
+                <input type="file" onChange={this.getSignedRequest}/>
+                <img src={this.state.url} />
 
-                    </Dropzone>
-
-                    {/* <div className="dropzone_front"
-                        style={{marginTop: '80px'}}
-                        onDropAccepted={this.getSignedRequest}>
-                        <img src={urlDropBoxFront} width="150px"/>
-                    </div>
-                    <div className="dropzone_back"
-                        style={{marginTop: '80px'}}>
-                         <img src={urlDropBoxBack} width="150px"/>
-                    </div> */}
-                {/* </div> */}
                 {mapOverCardValues}
                 <button style={{ fontSize: '20px', color: 'rgb(27, 144, 221)', fontWeight: 'bold' }}
                     onClick={() => this.addNewCard()}>Complete</button>

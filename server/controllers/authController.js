@@ -26,14 +26,14 @@ module.exports ={
         }else{
             res.sendStatus(401)
         }
+    },
+    getUser: (req, res) => {
+        const {user} = req.session;
+        // console.log({user});
+        if(user) {
+            res.status(200).send(user)
+        }else{
+            res.sendStatus(401)
+        }
     }
-    // getUser: (req, res) => {
-    //     const {user} = req.session;
-    //     // console.log({user});
-    //     if(user) {
-    //         res.status(200).send(user)
-    //     }else{
-    //         res.sendStatus(401)
-    //     }
-    // }
 } 

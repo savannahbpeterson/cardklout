@@ -9,7 +9,7 @@ const {
 module.exports = {
     awsS3: (req, res) => {
         aws.config = {
-            region: 'us-west-2',
+            region: 'us-west-1',
             accessKeyId: AWS_ACCESS_KEY_ID,
             secretAccessKey: AWS_SECRET_ACCESS_KEY
         }

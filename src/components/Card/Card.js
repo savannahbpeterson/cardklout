@@ -1,22 +1,263 @@
-import React from 'react'
-import './Card.css'
+import React, {Component} from 'react';
 
+const styles = {
+    titleTxt1: {
+        fontSize: 50,
+        fontWeight: 700,
+        fontFamily: 'sans-serif'
+    },
+    titleTxt2: {
+        fontSize: 30,
+        lineHeight: 0,
+        fontWeight: 300,
+        fontFamily: 'sans-serif',
+        color: '#cccccc'
+    },
+    titleTxt3: {
+        fontSize: 90,
+        fontWeight: 700,
+        fontFamily: 'sans-serif',
+        color: '#cccccc',
+        lineHeight: 0.4
+    },
+    titleTxtChange: {
+        fontSize: 90,
+        fontWeight: 700,
+        fontFamily: 'sans-serif',
+        color: '#ff8c1a',
+        lineHeight: 0.4
+    },
+    titleTxt4: {
+        fontFamily: 'sans-serif',
+        color: '#cccccc',
+        fontSize: 18
+    },
+    titleTxt5: {
+        display: 'flex',
+        fontFamily: 'sans-serif',
+        color: '#b3b3b3',
+        fontSize: 20,
+        marginBottom: 0
+    },
+    titleTxt: {
+        fontFamily: 'sans-serif',
+        color: '#cccccc',
+        fontSize: 18,
+        textAlign: 'right'
+    },
+    arrowLeft: {
+        opacity: 0.2,
+        fontSize: 60
+    },
+    arrowDown: {
+        opacity: 0.2,
+        fontSize: 30,
+        paddingLeft: 10
+    },
+    arrowRight: {
+        opacity: 0.2,
+        fontSize: 60,
+        paddingLeft: 50
+    },
+    bg: {
+        background: '#e7e7e7',
+        height: 150,
+        border: '1px solid #cccccc'
+    },
+    btn: {
+        boxShadow: "0 3px 18px rgba(203, 203, 203, 0.49)",
+        border: '1px solid #dddddd',
+        background: '#f5f5f5',
+        fontSize: '30px',
+        color: '#c7c7c7',
+        fontWeight: 600,
+        width: 140,
+        height: 55,
+        marginTop:'5%'
+    },
+    text: {
+        fontSize: 30,
+        color: '#e7e7e7'
+    }
+}
 
-const Card = (props) => {
-    return(
-        <div className="Card">
-            <div className="cardInfo">
-                <p className="id">ID {props.id}</p>
-                <p>Player Name {props.name}</p>
-                <p>Sport {props.sport}</p>
-                <p>Year {props.year}</p>
-                <p>Team {props.team}</p>
-                <p>Manufacture {props.manufacture}</p>
-                <p>Brand {props.brand}</p>
-                <p>Condition {props.condition}</p>
+class Card extends Component {
+    render() {
+        return (
+            <div>
+                <div className="container-fluid" style={{paddingLeft: '5%', paddingRight: '5%', paddingTop: '1%'}}>
+                    <div className="row">
+                        <div className="col-sm-12" style={{display: 'flex'}}>
+                            <div className="col-sm-6">
+                                <p style={styles.titleTxt1}>CARDKLOUT</p>
+                                <p style={styles.titleTxt2}>Powerful Card Analysis Tool</p>
+                            </div>
+                            <div className="col-sm-6" style={{padding: 0, paddingTop: '2%', display: 'block'}}>
+                                <div className="col-sm-12" style={{padding: 0, display: 'flex'}}>
+                                    <div className="col-sm-6" style={{padding: 0}}>
+                                        <div className="col-sm-12" style={{display: 'flex', padding: 0}}>
+                                            <div className="col-sm-6" style={{display: 'flex', padding: 0}}>
+                                                <div>
+                                                    <p style={styles.titleTxtChange}>27</p>
+                                                    <p style={styles.titleTxt4}>Card Clout</p>
+                                                </div>
+                                                <i style={{color: '#cc0000', fontSize: 25, marginTop: '-10px'}} className="fas fa-arrow-from-top"></i>
+                                            </div>
+                                            <div className="col-sm-6" style={{padding: 0}}>
+                                                <p style={styles.titleTxt3}>POOR</p>
+                                                <p style={styles.titleTxt4}>Card Condition</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="col-sm-6" style={{display: 'flex', justifyContent: 'flex-end'}}>
+                                        <div style={{display: 'flex', alignItems: 'baseline'}}>
+                                            <p style={{color: '#d6d6d6'}}>12</p><i style={{fontSize: 40, opacity: 0.2}} className="fas fa-filter"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="col-sm-12" style={{display: 'flex', padding: 0, alignItems: 'baseline'}}>
+                                    <div className="col-sm-6" style={{padding: 0}}>
+                                        <p style={{fontSize: 50, color: '#1aa3ff', fontWeight: 300}}>M12345678</p>
+                                    </div>
+                                    <div className="col-sm-6" style={{display: 'flex', justifyContent: 'flex-end'}}>
+                                        <div style={{display: 'flex', alignItems: 'flex-end'}}>
+                                            <i style={styles.arrowLeft} className="fas fa-caret-left"></i>
+                                            <p style={{color: '#d6d6d6', fontSize: 15,paddingLeft: 5, paddingRight: 5}}>1 of 12</p>
+                                            <i style={styles.arrowLeft} className="fas fa-caret-right"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="container-fluid">
+                    <div className="row" style={styles.bg}>
+                        <div className="col-sm-12" style={{paddingLeft: '5%', paddingRight: '5%', display: 'flex'}}>
+                            <div className="col-sm-6">
+                                <div className="col-sm-12" style={{display: 'flex', position: 'absolute', marginTop: '-12%', marginLeft: '-8%'}}>
+                                    <div className="col-sm-6">
+                                        <div style={{paddingLeft: 10}}>
+                                            <p style={styles.titleTxt5}>front</p>
+                                        </div>
+                                        <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                                            <i style={{color: '#1aa3ff', fontSize: 50, position: 'absolute'}} className="fas fa-plus"></i>
+                                            <img src={`${process.env.PUBLIC_URL}/assets/images/jimrice-front.png`} alt=""/>
+                                        </div>
+                                        <div style={{display: 'flex', justifyContent: 'center', paddingTop: '3%'}}>
+                                            <ul style={{display: 'flex', listStyleType: 'none'}}>
+                                                <li><i style={{color: '#1aa3ff', fontSize: 20}} className="fas fa-search"></i></li>
+                                                <li><i style={{color: '#1aa3ff', fontSize: 20, paddingLeft: 10}} className="fas fa-sync-alt"></i></li>
+                                                <li><i style={{color: '#1aa3ff', fontSize: 20, paddingLeft: 10}} className="fas fa-camera-retro"></i></li>
+                                                <li><i style={{color: '#1aa3ff', fontSize: 20, paddingLeft: 10}} className="fas fa-upload"></i></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div className="col-sm-6">
+                                        <div style={{paddingLeft: 10}}>
+                                            <p style={styles.titleTxt5}>back</p>
+                                        </div>
+                                        <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                                            <i style={{color: '#1aa3ff', fontSize: 50, position: 'absolute'}} className="fas fa-plus"></i>
+                                            <img src={`${process.env.PUBLIC_URL}/assets/images/jimrice-back.png`} alt=""/>
+                                        </div>
+                                        <div style={{display: 'flex', justifyContent: 'center', paddingTop: '3%'}}>
+                                            <ul style={{display: 'flex', listStyleType: 'none'}}>
+                                                <li><i style={{color: '#1aa3ff', fontSize: 20}} className="fas fa-search"></i></li>
+                                                <li><i style={{color: '#1aa3ff', fontSize: 20, paddingLeft: 10}} className="fas fa-sync-alt"></i></li>
+                                                <li><i style={{color: '#1aa3ff', fontSize: 20, paddingLeft: 10}} className="fas fa-camera-retro"></i></li>
+                                                <li><i style={{color: '#1aa3ff', fontSize: 20, paddingLeft: 10}} className="fas fa-upload"></i></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-sm-6" style={{display: 'flex', alignItems: 'center', padding: 0}}>
+                                <div className="col-sm-12" style={{display: 'flex', padding: 0}}>
+                                    <div className="col-sm-6" style={{padding: 0}}>
+                                        <div>
+                                            <div style={{display: 'flex', alignItems: 'end'}}>
+                                                <p style={styles.titleTxt5}>PlayerName</p>
+                                                <i style={styles.arrowDown} className="fas fa-caret-down"></i>
+                                            </div>
+                                            {/*<hr style={{width: 15, border: '2px solid #000000'}}/>*/}
+                                            <p style={{fontSize: 40, lineHeight: 0.6}}>JIM RICE</p>
+                                            <div style={{display: 'flex', alignItems: 'end'}}>
+                                                <p style={styles.titleTxt5}>Card Year</p>
+                                                <i style={styles.arrowDown} className="fas fa-caret-down"></i>
+                                            </div>
+                                            <p style={{fontSize: 40, lineHeight: 0.6}}>1976</p>
+                                        </div>
+                                    </div>
+                                    <div className="col-sm-6" style={{display: 'flex', padding: 0, justifyContent: 'flex-end'}}>
+                                        <div style={{display: 'block'}}>
+                                            <p style={styles.titleTxt}>Card#</p>
+                                            <p style={styles.titleTxt3}>340</p>
+                                            <img style={{paddingTop: 30, width: '70%', position: 'absolute'}} src={`${process.env.PUBLIC_URL}/assets/images/colorbar.png`} alt=""/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-sm-12" style={{display: 'flex', padding: 0}}>
+                            <div className="col-sm-6" style={{paddingTop: '8%', paddingLeft: '5%'}}>
+                                <div className="col-sm-11" style={{padding: 0, borderRight: '1px solid #000000', height: 500, display: 'flex', alignItems: 'center', position: 'relative'}}>
+                                    <div style={{display: 'block', position: 'absolute', right: '-25px'}}>
+                                        <div style={{display: 'flex', justifyContent: 'flex-end'}}>
+                                            <div style={{display: 'flex'}}>
+                                                <p style={styles.text}>no action</p>
+                                                <img src={`${process.env.PUBLIC_URL}/assets/images/ebay.png`} alt=""/>
+                                            </div>
+                                        </div>
+                                        <div style={{display: 'flex', alignItems: 'baseline'}}>
+                                            <p style={styles.text}>not marked</p>
+                                            <button style={styles.btn} className="btn btn-default">Beckett</button>
+                                        </div>
+                                        <div style={{display: 'flex', alignItems: 'baseline'}}>
+                                            <p style={styles.text}>not marked</p>
+                                            <button style={styles.btn} className="btn btn-default">PSA</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-sm-6" style={{display: 'block', padding: 0, paddingTop: 20}}>
+                                <div>
+                                    <div style={{display: 'flex', alignItems: 'end'}}>
+                                        <p style={styles.titleTxt5}>Team</p>
+                                        <i style={styles.arrowDown} className="fas fa-caret-down"></i>
+                                    </div>
+                                    <p style={{fontSize: 40, lineHeight: 0.6}}>Boston Red Sox</p>
+                                    <div style={{display: 'flex', alignItems: 'end'}}>
+                                        <p style={styles.titleTxt5}>Manufacture</p>
+                                        <i style={styles.arrowDown} className="fas fa-caret-down"></i>
+                                    </div>
+                                    <p style={{fontSize: 40, lineHeight: 0.6}}>Topps Co</p>
+                                    <div style={{display: 'flex', alignItems: 'end'}}>
+                                        <p style={styles.titleTxt5}>Brand</p>
+                                        <i style={styles.arrowDown} className="fas fa-caret-down"></i>
+                                    </div>
+                                    <p style={{fontSize: 40, lineHeight: 0.6}}>Topps Chewing Gum</p>
+                                    <div style={{display: 'flex', alignItems: 'end'}}>
+                                        <p style={styles.titleTxt5}>Sport</p>
+                                        <i style={styles.arrowDown} className="fas fa-caret-down"></i>
+                                    </div>
+                                    <p style={{fontSize: 40, lineHeight: 0.6}}>Baseball</p>
+                                    <div style={{display: 'flex', alignItems: 'end'}}>
+                                        <p style={styles.titleTxt5}>Position</p>
+                                        <i style={styles.arrowDown} className="fas fa-caret-down"></i>
+                                    </div>
+                                    <p style={{fontSize: 40, lineHeight: 0.6}}>Outfield</p>
+                                    <i style={{color: '#1aa3ff', fontSize: 30, paddingTop: 10}} className="fas fa-plus-circle"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    )
+        );
+    }
 }
 
 export default Card;

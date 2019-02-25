@@ -1,151 +1,20 @@
-/* FONT
-
-/* /////////////////////////////////////
-[RESTYLE TAG] */
-/* * {
-    margin: 0px;
-    padding: 0px;
-    box-sizing: border-box;
+@media only screen and (max-width: 1000px) {
+    .mobile {
+        display: block !important;
+    }
+    .title {
+        margin-top: 100px !important;
+    }
+    .mobileForm {
+        display: block !important;
+    }
+    .form1 {
+        border-right: 0px !important;
+    }
+    .form2 {
+        padding-bottom: 9% !important;
+    }
+    .col-sm-6 {
+        max-width: 100% !important;
+    }
 }
-body, html {
-    height: 100%;
-}
-
-/* ---------------------------------- */
-/* a {
-    font-size: 14px;
-    line-height: 1.7;
-    color: #666666;
-    margin: 0px;
-    transition: all 0.4s;
-    -webkit-transition: all 0.4s;
-    -o-transition: all 0.4s;
-    -moz-transition: all 0.4s
-}
-a:focus {
-    outline: none !important;
-}
-a:hover {
-    text-decoration: none;
-    color: #403866;
-} */
-/* ------------------------------------------------------ */
-/* h1,h2,h3,h4,h5,h6 {
-    margin: 0px;
-}
-
-p {
-    font-size: 14px;
-    line-height: 1.7;
-    color: #666666;
-    margin: 0px
-}
-ul, li {
-    margin: 0px;
-    list-style-type: none;
-} */
-/* ------------------------------------------------------- */
-
-input {
-    outline: none;
-    border: none;
-}
-textarea {
-    outline: none;
-    border: none;
-}
-textarea:focus, input:focus {
-    border-color: yellow !important;
-} */
-/* refer to line 89 */
- label {
-    display: block;
-    margin: 0;
-}
-/* ------------------------------------------------------------ */
-
-button {
-    outline: none !important;
-    border: none;
-    background: transparent;
-}
-button:hover {
-    cursor: pointer;
-}
-iframe {
-    border: none !important;
-}
-
-/* /////////////////////////////////////////////////////////////
-[UTILITY] */
-
-.txt1 {
-    font-size: 16px;
-    color: #827ffe;
-    line-height: 1.4;
-}
-
-/* /////////////////////////////////////////////////////////////
-[login] */
-
-.limiter {
-    width: 100%;
-    margin: 0 auto;
-}
-.container-login100 {
-    width: 100%;
-    min-height: 100vh;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    padding: 15px;
-
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-.wrap-login100{
-    width: 390px;
-    background: #fff;
-    border-radius: 10px;
-    position: relative;
-}
-
-/* /////////////////////////////////////////////////////////////
-[Form] */
-
-.login100-form {
-    width: 100%
-}
-.login100-form-title {
-    font-size: 30px;
-    color: #403866;
-    line-height: 1.2;
-    text-transform: uppercase;
-    text-align: center;
-
-    width: 100%;
-    display: block;
-}
-
-/* ------------------------------------------------------------ 
-[Input]*/
-
-.wrap-input100{
-    width: 100%;
-    position: relative;
-    background-color: #e6e6e6;
-    border: 1px solid transparent;
-    border-radius: 100px;
-}
-
-
-.input100 {
-    color: #403866;
-    line-height: 1.2;
-} 

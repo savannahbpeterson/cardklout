@@ -5,6 +5,96 @@ import { connect } from 'react-redux';
 import { updateUser } from './../../ducks/reducer'
 // import bootstrap from 'react-bootstrap'
 
+const styles = {
+    bg: {
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        height: "-webkit-fill-available",
+    },
+    title: {
+        fontSize: 50,
+        // margin: 0,
+        fontWeight: 700,
+        fontFamily: 'sans-serif'
+    },
+    bgLayer: {
+        background: '#404040',
+        display: 'flex',
+        padding: 0
+    },
+    bgLayerTitle: {
+        color: '#f2f2f2',
+        fontSize: 30,
+        textAlign: 'left',
+        marginTop: '9%',
+        marginLeft: '9%',
+        marginRight: '9%'
+    },
+    formGroup: {
+        marginLeft: '9%',
+        marginRight: '9%',
+        marginBottom: '9%'
+    },
+    btn: {
+        width: '100%',
+        paddingTop: 10,
+        paddingBottom: 10
+    },
+    checkBox: {
+        textAlign: 'left',
+        color: 'white',
+        display: 'flex',
+        paddingBottom: 16
+    },
+    textTitle: {
+        color: '#f2f2f2',
+        marginTop: '9%',
+        marginLeft: '9%',
+        marginRight: '9%'
+    },
+    formBtn: {
+        marginLeft: '10%',
+        marginRight: '10%',
+        marginBottom: '10%'
+    },
+    facebookBtn: {
+        width: '100%',
+        background: '#4d79ff',
+        border: 0,
+        paddingTop: 10,
+        paddingBottom: 10,
+        marginBottom: 10
+    },
+    googleBtn: {
+        width: '100%',
+        background: '#ff1a1a',
+        border: 0,
+        paddingTop: 10,
+        paddingBottom: 10
+    },
+    accountBtn: {
+        width: '100%',
+        background: '#0d0d0d',
+        border: 0,
+        paddingTop: 10,
+        paddingBottom: 10
+    },
+    divide: {
+        color: '#ffffff',
+        paddingTop: 10,
+        paddingBottom: 1
+    },
+    footer: {
+        background: '#e7e7e7',
+        textAlign: 'left',
+    },
+    footerTxt: {
+        padding: 20
+    }
+}
+
+
 class Auth extends Component {
     constructor(props) {
         super(props)
@@ -58,15 +148,6 @@ class Auth extends Component {
         // const { username, password } = this.state;
         return (
             <div>
-                {/* <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
-                <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css"/>
-                <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css"/>
-                <link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css"/>
-                <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css"/>
-                <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css"/>
-                <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css"/>
-                <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css"/>
-                <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css"/> */}
                 <body style={{ marginTop: 150, marginLeft: 40 }}>
                     <div class="container">
                         <div class="row">

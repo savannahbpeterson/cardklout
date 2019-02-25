@@ -2,7 +2,15 @@
 const initialState = {
     id: 0,
     username: '',
-    user: {}
+    user: {},
+    
+    brand: '',
+    player_name: '',
+    team: '',
+    condition: '',
+    year: '',
+    front_url: '',
+    back_url: ''
 }
 
 //constants

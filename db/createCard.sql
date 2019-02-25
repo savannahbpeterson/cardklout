@@ -6,7 +6,9 @@ insert into player_cards(
     team,
     condition,
     user_id,
-    year
+    year,
+    front_url,
+    back_url
 )(
     ${brand},
     ${player_name},
@@ -15,6 +17,8 @@ insert into player_cards(
     ${team},
     ${condition},
     ${user_id},
-    ${year}
+    ${year},
+    ${front_url},
+    ${back_url}
 )
 returning brand, player_name, sport, team, manufacture, condition, user_id, year;

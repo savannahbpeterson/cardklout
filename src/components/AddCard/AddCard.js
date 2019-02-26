@@ -205,9 +205,9 @@ class AddCard extends Component {
 
 
     render() {
-        let mapOverCardValues = this.state.CardValues.map((val, i, arr) => {
-            return <InputBoxes key={i} val={val} updateFn={this.updateCategory} submitBtn={this.submit} edit={this.edit} />
-        })
+        // let mapOverCardValues = this.state.CardValues.map((val, i, arr) => {
+        //     return <InputBoxes key={i} val={val} updateFn={this.updateCategory} submitBtn={this.submit} edit={this.edit} />
+        // })
         // const { isUploading } = this.state
         return (
             <div className="AddCard_page">
@@ -269,7 +269,7 @@ class AddCard extends Component {
                                                 <p style={styles.titleTxt5}>Front</p>
                                                 <div className={styles.imageInputWrapper}>
                                                     <input type="file" onChange={this.getSignedRequest} style={{position: 'absolute', width: '100%', height: '100%', opacity: '0.0', zIndex: '2'}}/>
-                                                    <img src={this.state.front_url == '' ? this.state.defaultFrontUrl : this.state.front_url} style={{
+                                                    <img src={this.state.front_url === '' ? this.state.defaultFrontUrl : this.state.front_url} style={{
                                                         position: 'relative',
                                                         width: 160,
                                                         height: 210,
@@ -305,7 +305,7 @@ class AddCard extends Component {
                                                 <p style={styles.titleTxt5}>Back</p>
                                                 <div className={styles.imageInputWrapper} style={{display: 'block'}}>
                                                     <input type="file" onChange={this.getSignedRequest} style={{position: 'absolute', width: '100%', height: '100%', opacity: '0.0', zIndex: '2', left: 0, right: 0, top: 0, bottom: 0}}/>
-                                                    <img src={this.state.back_url == '' ? this.state.defaultBackUrl : this.state.back_url} style={{
+                                                    <img src={this.state.back_url === '' ? this.state.defaultBackUrl : this.state.back_url} style={{
                                                         position: 'relative',
                                                         width: 160,
                                                         height: 210,

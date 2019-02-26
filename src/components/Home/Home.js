@@ -100,11 +100,11 @@ class Home extends Component {
 
     render() {
         console.log(this)
-        let displayedCards = this.state.usersCards.map(card => {
-            return(
-                <div key={card.card_id}><h1>{card.player_name}</h1></div>
-            )
-        })
+        // let displayedCards = this.state.usersCards.map(card => {
+        //     return(
+        //         <div key={card.card_id}><h1>{card.player_name}</h1></div>
+        //     )
+        // })
         return (
             <div>
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"/>

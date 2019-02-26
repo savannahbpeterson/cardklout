@@ -23,5 +23,7 @@ module.exports={
             console.log(err)
         })
     },
-    editCard: (req, res)
+    editCard: (req, res) => {
+        
+    }
 }

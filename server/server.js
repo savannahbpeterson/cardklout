@@ -32,6 +32,8 @@ app.post("/auth/login", authCtrl.login);
 
 //USERS DATA (CARDS)
 app.get('/home/getUserCards', UDCtrl.getUserCards);
+app.delete('/api/home/:id', UDCtrl.deleteCard)
+app.put('/home/edit', UDCtrl.editCard)
 
 //ADD CARD
 app.post('/addCard/addNewCard', AddCtrl.addNew)

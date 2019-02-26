@@ -73,9 +73,9 @@ const styles = {
         display: 'flex',
         boxShadow: "0 3px 18px rgba(203, 203, 203, 0.49)",
         background: '#e7e7e7',
-        fontSize: '1.3vw',
+        fontSize: '1.7vw',
         color: '#1aa3ff',
-        fontWeight: 600,
+        fontWeight: 700,
         padding: '5px 15px',
         marginTop: '15px'
     },

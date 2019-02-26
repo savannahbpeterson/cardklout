@@ -13,7 +13,7 @@ const styles = {
         height: "-webkit-fill-available",
     },
     title: {
-        fontSize: 50,
+        fontSize: 40,
         // margin: 0,
         fontWeight: 700,
         fontFamily: 'sans-serif'
@@ -21,11 +21,12 @@ const styles = {
     bgLayer: {
         background: '#404040',
         display: 'flex',
-        padding: 0
+        padding: 0,
+        height: 240
     },
     bgLayerTitle: {
         color: '#f2f2f2',
-        fontSize: 30,
+        fontSize: 20,
         textAlign: 'left',
         marginTop: '9%',
         marginLeft: '9%',
@@ -34,12 +35,14 @@ const styles = {
     formGroup: {
         marginLeft: '9%',
         marginRight: '9%',
-        marginBottom: '9%'
+        marginBottom: '9%',
+        paddingTop: 3,
+        paddingBottom: 3
     },
     btn: {
         width: '100%',
-        paddingTop: 10,
-        paddingBottom: 10
+        paddingTop: 3,
+        paddingBottom: 3
     },
     checkBox: {
         textAlign: 'left',
@@ -62,23 +65,28 @@ const styles = {
         width: '100%',
         background: '#4d79ff',
         border: 0,
-        paddingTop: 10,
-        paddingBottom: 10,
-        marginBottom: 10
+        paddingTop: 5,
+        paddingBottom: 5,
+        marginBottom: 10,
+        fontSize: 12
     },
     googleBtn: {
         width: '100%',
         background: '#ff1a1a',
         border: 0,
-        paddingTop: 10,
-        paddingBottom: 10
+        paddingTop: 5,
+        paddingBottom: 5,
+        fontSize: 12,
+        marginTop: 13
     },
     accountBtn: {
         width: '100%',
         background: '#0d0d0d',
         border: 0,
-        paddingTop: 10,
-        paddingBottom: 10
+        paddingTop: 5,
+        paddingBottom: 5,
+        marginTop: 70,
+        fontSize: 12
     },
     divide: {
         color: '#ffffff',
@@ -147,54 +155,45 @@ class Auth extends Component {
         console.log(this.props)
         // const { username, password } = this.state;
         return (
-            <div>
-                <body style={{ marginTop: 150, marginLeft: 40 }}>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-4 col-md-4">
-                                <div style={{ textAlign: 'center', fontSize: '60px', display: 'inline' }}><b>CARDKLOUT</b></div>
-                                <div class="card" style={{ marginLeft: '-180px', width: '720px', backgroundColor: 'rgb(116, 117, 119)' }}>
-                                    <div class="card-body col-md-5" style={{ marginBotton: '50px', marginLeft: '35px' }}>
-                                        <label for="" style={{ fontSize: '20px', color: 'white', }}><b>Login</b></label>
-                                        <form style={{ marginTop: '25px' }}>
-
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="Username/Email" onChange={e => this.handleChange("username", e.target.value)}/>
-                                            </div>
-                                            <div class="form-group">
-                                                <input type="password" class="form-control" placeholder="Password" onChange={e => this.handleChange("password", e.target.value)}/>
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="customControlAutosizing" />
-                                                    <label class="custom-control-label" for="customControlAutosizing" style={{ color: 'white' }}>Keep Me Signed in</label>
-                                                </div>
-                                            </div>
-                                            <button type="submit" 
-                                                    class="btn btn-success btn-block" 
-                                                    style={{ marginTop: '10px', width: '70px',
-                                                    backgroundColor: 'black', border: 0, color: 'rgb(27, 144, 221)' }} 
-                                                    onClick={this.login}>LOG IN</button>
-                                        </form>
+            <div className="row">
+                <div className="col-sm-12" style={styles.bg}>
+                    <div className="col-sm-3"></div>
+                    <div className="col-sm-6 mobile" style={{textAlign: 'center'}}>
+                        <div style={{display: 'block'}}>
+                            <p className="title" style={styles.title}>CARDKLOUT</p>
+                        </div>
+                        <div className="col-sm-12 mobileForm" style={styles.bgLayer}>
+                            <div className="col-sm-6 form1" style={{borderRight: '1px solid #ffffff'}}>
+                                <p style={styles.bgLayerTitle}>Login</p>
+                                <form style={styles.formGroup}>
+                                    <div className="form-group">
+                                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="USERNAME/EMAIL" style={{height: '5vh'}} onChange={e => this.handleChange("username", e.target.value)}/>
                                     </div>
-                                </div>
-                                <div style={{ marginLeft: 50, marginTop: -320, width: 2, height: 290 }}></div>
-                                <div class="col-md-5">
-                                    {/* <p style={{ color: 'white' }}>If you dont't have  an account click the button below to request an account.</p> */}
-                                    <button type="button" class="btn btn-outline-primary btn-block" style={{ marginTop: 10, color: 'white', backgroundColor: 'black', border: 0 }}>REQUEST ACCOUNT</button>
-                                    <p style={{ textAlign: 'center', marginTop: '15px', color: 'white' }}>OR</p>
-                                    <div class="mt-4 text-center login-with-social" style={{ marginBottom: '50px' }}>
-                                        <button type="button" class="btn btn-outline-primary btn-block" style={{color: 'white', backgroundColor:'rgb(27, 82, 233)'}}><i class="mdi mdi-facebook"></i> Login With Facebook</button>
-                                        <button type="button" class="btn btn-outline-danger btn-block" style={{color:'white', backgroundColor:'red'}}><i class="mdi mdi-google-plus"></i> Login With Google</button>
+                                    <div className="form-group">
+                                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="PASSWORD" style={{height: '5vh'}} onChange={e => this.handleChange("password", e.target.value)}/>
                                     </div>
-                                </div>
+                                    <div className="form-check" style={styles.checkBox}>
+                                        <input type="checkbox" className="form-check-input" id="exampleCheck1" />
+                                        <label style={{fontSize: 12}} className="form-check-label" htmlFor="exampleCheck1">keep me signed in</label>
+                                    </div>
+                                    <button style={styles.btn} type="submit" className="btn btn-primary" onClick={this.login}>LOG IN</button>
+                                </form>
                             </div>
-                            <div class="card" style={{marginLeft:'-180px', marginTop:'-10px', width: '720px', height:'80px', backgroundColor: 'lightgray'}}>
-                            <p style={{marginTop:'20px', marginLeft:'20px'}}>Can't get in to your account? Did you forget your password?</p>
+                            <div className="col-sm-6 form2">
+                                <form style={styles.formBtn}>
+                                    <button style={styles.accountBtn} type="submit" className="btn btn-primary">REQUEST ACCOUNT</button>
+                                    <label style={styles.divide}>OR</label>
+                                    <button style={styles.facebookBtn} type="submit" className="btn btn-primary">REQUEST WITH FACEBOOK</button>
+                                    <button style={styles.googleBtn} type="submit" className="btn btn-primary">REQUEST WITH GOOGLE</button>
+                                </form>
                             </div>
                         </div>
+                        <div className="col-sm-12" style={styles.footer}>
+                            <p style={styles.footerTxt}>Can't get in to your account? Did you <a href="#" style={{color: '#000000', textDecoration: 'underline'}}>forget your password?</a></p>
+                        </div>
                     </div>
-                </body>
+                    <div className="col-sm-3"></div>
+                </div>
             </div>
         )
     }

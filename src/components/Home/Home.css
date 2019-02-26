@@ -33,7 +33,7 @@ table {
 .fixed_header tbody{
     display:block;
     /* width: 100%; */
-    overflow: overlay;
+    overflow: scroll;
     height: 800px;
     padding-left: 8.5%;
     padding-right: 4%;

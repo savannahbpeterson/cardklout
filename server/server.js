@@ -27,12 +27,12 @@ app.use(session({
 }))
 
 //AUTHENTICATION
-app.get('/api/user', authCtrl.getUser)
 app.post("/auth/login", authCtrl.login);
+app.get('/api/user', authCtrl.getUser)
 
 //USERS DATA (CARDS)
 app.get('/home/getUserCards', UDCtrl.getUserCards);
-app.delete('/api/home/:id', UDCtrl.deleteCard)
+app.delete('/api/delete/:id', UDCtrl.deleteCard)
 app.put('/home/edit', UDCtrl.editCard)
 
 //ADD CARD

@@ -38,7 +38,8 @@ const styles = {
         color: '#b3b3b3',
         fontSize: 15,
         marginBottom: 0,
-        fontWeight: 300
+        fontWeight: 300,
+        marginTop: 10
     },
     titleTxt: {
         fontFamily: 'sans-serif',
@@ -87,9 +88,17 @@ class CardModal extends Component {
         const { card_id, player_name, sport, year, team, manufacturer, brand, condition, clout, position, front_url, back_url} = this.props.modalCard
         return (
             <div>
+                {/* <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/> */}
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"></link>
                 <div onClick={() => this.props.toggleCardModal()} style={{ position: 'absolute', height: '100vh', width: '100vw', zIndex: 4}}>
                     <div style={{height: '90vh', width: '90vw', position: 'absolute', zIndex: 5, left: '5vw', top: '5vh'}}>
-                        <p style={{position: 'absolute', fontSize: 24, fontWeight: 600}} onClick={() => this.props.toggleCardModal()}>x</p>
+                        {/* <p style={{position: 'absolute', fontSize: 24, fontWeight: 600}} onClick={() => this.props.toggleCardModal()}>X</p> */}
+                        {/* <button style={{position: 'absolute'}} type="button" class="close" aria-label="Close" onClick={() => this.props.toggleCardModal()}>
+                            <span aria-hidden="true">&times;</span>
+                        </button> */}
+                        <button style={{position: 'absolute', color: 'grey', border: 'none', left: 8}} type="button" class="btn btn-default btn-sm" onClick={() => this.props.toggleCardModal()}>
+                            <span class="glyphicon glyphicon-remove"></span> 
+                        </button>
                     {/* <h3>{player_name}</h3> */}
                     </div>
                 </div>
@@ -185,7 +194,7 @@ class CardModal extends Component {
                                 <div className="col-sm-12" style={{display: 'flex', padding: 0}}>
                                     <div className="col-sm-6" style={{padding: 0}}>
                                         <div>
-                                            <div style={{display: 'flex', alignItems: 'end'}}>
+                                            <div style={{display: 'flex', alignItems: 'end', bottom: 20}}>
                                                 <p style={styles.titleTxt5}>Player Name:</p>
                                                 {/* <i style={styles.arrowDown} className="fas fa-caret-down"></i> */}
                                             </div>
@@ -238,10 +247,10 @@ class CardModal extends Component {
                                         {/* <i style={styles.arrowDown} className="fas fa-caret-down"></i> */}
                                     </div>
                                     <p style={{display: 'flex',fontSize: 30, lineHeight: 0.6, color: '#696969', fontWeight: 600}}>{team}</p>
-                                    <div style={{display: 'flex', alignItems: 'end'}}>
+                                    {/* <div style={{display: 'flex', alignItems: 'end'}}>
                                         <p style={styles.titleTxt5}>Manufacture:</p>
-                                        {/* <i style={styles.arrowDown} className="fas fa-caret-down"></i> */}
-                                    </div>
+                                        <i style={styles.arrowDown} className="fas fa-caret-down"></i>
+                                    </div> */}
                                     <p style={{display: 'flex',fontSize: 30, lineHeight: 0.6, color: '#696969', fontWeight: 600}}>{manufacturer}</p>
                                     <div style={{display: 'flex', alignItems: 'end'}}>
                                         <p style={styles.titleTxt5}>Brand:</p>

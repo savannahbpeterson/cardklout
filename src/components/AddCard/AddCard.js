@@ -6,6 +6,7 @@ import axios from 'axios'
 // import Dropzone from 'react-dropzone';
 // import Spinner from 'react-spinkit';
 import InputBoxes from './InputBoxes';
+import {Link} from 'react-router-dom'
 
 const styles = {
     titleTxt1: {
@@ -103,6 +104,8 @@ class AddCard extends Component {
                 { name: 'Sport', edit: true, value: '' },
                 { name: 'Position', edit: true, value: '' },
                 { name: 'Condition', edit: true, value: '' },
+                // { name: 'front_url', edit: true, value: ''},
+                // { name: 'back_url', edit: true, value: ''}
             ],
 
             isUploading: false,
@@ -145,7 +148,7 @@ class AddCard extends Component {
     }
 
     //images
-    getSignedRequest = (e) => {
+    getSignedRequest = (e, isFront) => {
         let file = e.target.files[0];
         axios.get('/sign-s3', {
             params: {
@@ -154,7 +157,8 @@ class AddCard extends Component {
             }
         }).then((response) => {
             const { signedRequest, url } = response.data
-            this.uploadFile(file, signedRequest, url)
+            console.log(response.data)
+            this.uploadFile(file, signedRequest, url, isFront)
         }).catch(err => {
             console.log(err)
         })
@@ -166,7 +170,7 @@ class AddCard extends Component {
         });
     }
 
-    uploadFile = (file, signedRequest, frontUrl, backUrl) => {
+    uploadFile = (file, signedRequest, url, isFront) => {
 
         var options = {
             headers: {
@@ -176,7 +180,9 @@ class AddCard extends Component {
 
         axios.put(signedRequest, file, options)
             .then(response => {
-                this.setState({ frontUrl, backUrl })
+                console.log(response)
+                const location = isFront ? 'front_url' : 'back_url'
+                this.setState({[location]: url})
             })
             .catch(err => {
 
@@ -193,10 +199,22 @@ class AddCard extends Component {
     //ADD NEW CARD BUTTON
     addNewCard = () => {
         const { CardValues } = this.state
-        console.log('CardValues', CardValues)
-        axios.post('/addCard/addNewCard', { CardValues })
+        const bodyObj = { 
+            player_name: CardValues[0].value,
+            year: CardValues[1].value,
+            team: CardValues[2].value,
+            brand: CardValues[3].value,
+            sport: CardValues[4].value,
+            position: CardValues[5].value,
+            condition: CardValues[6].value,
+            front_url: this.state.front_url,
+            back_url: this.state.back_url
+        }
+        console.log('CardValues', bodyObj)
+        console.log(this.state.CardValues[4])
+        axios.post('/addCard/addNewCard', bodyObj)
             .then(() => {
-                // this.props.history.push('/home')
+                this.props.history.push('/home')
             })
             .catch((err) => {
                 console.log(err)
@@ -208,17 +226,10 @@ class AddCard extends Component {
         // let mapOverCardValues = this.state.CardValues.map((val, i, arr) => {
         //     return <InputBoxes key={i} val={val} updateFn={this.updateCategory} submitBtn={this.submit} edit={this.edit} />
         // })
-        // const { isUploading } = this.state
+        const { isUploading } = this.state
         return (
             <div className="AddCard_page">
-
-                {/* {mapOverCardValues}
-                <button style={{ fontSize: '20px', color: 'rgb(27, 144, 221)', fontWeight: 'bold' }}
-                    onClick={() => this.addNewCard()}>Complete</button> */}
-
-
-                {/* above is my original code */}
-
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"/>
                 <div>
                     <div className="container-fluid" style={{ paddingLeft: '5%', paddingRight: '5%', paddingTop: '1%' }}>
                         <div className="row">
@@ -227,6 +238,10 @@ class AddCard extends Component {
                                     <p style={styles.titleTxt1}>CARDKLOUT</p>
                                     <p style={styles.titleTxt2}>Powerful Card Analysis Tool</p>
                                 </div>
+                                <button style={{position: 'absolute', border: 'none', height: 27, color: 'grey', left: 8, top: 20}} type="button" class="btn btn-default btn-sm">
+                                    <Link to={'/home'} style={{textDecoration: 'none'}}><span class="glyphicon glyphicon-triangle-left"></span></Link>
+                                    
+                                 </button>
                                 <div className="col-sm-6" style={{ padding: 0, paddingTop: '2%', display: 'block' }}>
                                     <div className="col-sm-12" style={{ padding: 0, display: 'flex' }}>
                                         <div className="col-sm-6" style={{ padding: 0 }}>
@@ -268,7 +283,7 @@ class AddCard extends Component {
                                             <div style={{ paddingLeft: 10 }}>
                                                 <p style={styles.titleTxt5}>Front</p>
                                                 <div className={styles.imageInputWrapper}>
-                                                    <input type="file" onChange={this.getSignedRequest} style={{position: 'absolute', width: '100%', height: '100%', opacity: '0.0', zIndex: '2'}}/>
+                                                    <input type="file" onChange={(e) => this.getSignedRequest(e, true)} style={{position: 'absolute', width: '100%', height: '100%', opacity: '0.0', zIndex: '2'}}/>
                                                     <img src={this.state.front_url === '' ? this.state.defaultFrontUrl : this.state.front_url} style={{
                                                         position: 'relative',
                                                         width: 160,
@@ -304,7 +319,7 @@ class AddCard extends Component {
                                             <div style={{ paddingLeft: 10 }}>
                                                 <p style={styles.titleTxt5}>Back</p>
                                                 <div className={styles.imageInputWrapper} style={{display: 'block'}}>
-                                                    <input type="file" onChange={this.getSignedRequest} style={{position: 'absolute', width: '100%', height: '100%', opacity: '0.0', zIndex: '2', left: 0, right: 0, top: 0, bottom: 0}}/>
+                                                    <input type="file" onChange={(e) => this.getSignedRequest(e, false)} style={{position: 'absolute', width: '100%', height: '100%', opacity: '0.0', zIndex: '2', left: 0, right: 0, top: 0, bottom: 0}}/>
                                                     <img src={this.state.back_url === '' ? this.state.defaultBackUrl : this.state.back_url} style={{
                                                         position: 'relative',
                                                         width: 160,
@@ -393,28 +408,32 @@ class AddCard extends Component {
                                             {/* <i style={styles.arrowDown} className="fas fa-caret-down"></i> */}
                                             
                                         </div>
-                                        <InputBoxes val={this.state.CardValues[2]} updateFn={this.updateCategory}/>
-                                        <div style={{ display: 'flex', alignItems: 'end' }}>
+                                        <InputBoxes val={this.state.CardValues[2]} updateFn={this.updateCategory} />
+                                         {/* <div style={{ display: 'flex', alignItems: 'end' }}>
                                             <p style={styles.titleTxt5}>Manufacture</p>
-                                            {/* <i style={styles.arrowDown} className="fas fa-caret-down"></i> */}
-                                        </div>
-                                        <InputBoxes val={this.state.CardValues[3]} updateFn={this.updateCategory} />
+                                            <i style={styles.arrowDown} className="fas fa-caret-down"></i>
+                                        </div> */}
+                                        {/* <InputBoxes val={this.state.CardValues[3]} updateFn={this.updateCategory} /> */}
                                         <div style={{ display: 'flex', alignItems: 'end' }}>
                                             <p style={styles.titleTxt5}>Brand</p>
                                             {/* <i style={styles.arrowDown} className="fas fa-caret-down"></i> */}
                                         </div>
-                                        <InputBoxes val={this.state.CardValues[4]} updateFn={this.updateCategory} />
+                                        <InputBoxes val={this.state.CardValues[3]} updateFn={this.updateCategory} />
                                         <div style={{ display: 'flex', alignItems: 'end' }}>
                                             <p style={styles.titleTxt5}>Sport</p>
                                             {/* <i style={styles.arrowDown} className="fas fa-caret-down"></i> */}
                                         </div>
-                                        <InputBoxes val={this.state.CardValues[5]} updateFn={this.updateCategory}/>
+                                        <InputBoxes val={this.state.CardValues[4]} updateFn={this.updateCategory}/>
                                         <div style={{ display: 'flex', alignItems: 'end' }}>
                                             <p style={styles.titleTxt5}>Position</p>
                                             {/* <i style={styles.arrowDown} className="fas fa-caret-down"></i> */}
                                         </div>
-                                        <InputBoxes val={this.state.CardValues[6]} updateFn={this.updateCategory} />
+                                        <InputBoxes val={this.state.CardValues[5]} updateFn={this.updateCategory} />
                                         {/* <i style={{ color: '#1aa3ff', fontSize: 30, paddingTop: 10 }} className="fas fa-plus-circle"></i> */}
+                                        <div style={{display: 'flex', alignItems:'end'}}>
+                                            <p style={styles.titleTxt5}>Condition</p>
+                                        </div>
+                                        <InputBoxes val={this.state.CardValues[6]} updateFn={this.updateCategory} />
 
                                            <button className="btn btn-default" style={styles.addbtn} onClick={(e) => this.addNewCard(e.target.value)}>ADD CARD</button>
                                     </div>

@@ -17,7 +17,10 @@ module.exports={
         const db = req.app.get('db');
         const {params} = req;
         db.deleteCard(params.id).then(() => {
-            res.sendStatus(200)
+            console.log('deleted')
+            db.users.getCards({id: req.session.user.id}).then((cards) => {
+                res.status(200).send(cards)
+            })
         }).catch((err) => {
             res.status(500).send({errorMessage: "Something went wrong. Unable to delete card"})
             console.log(err)
@@ -26,4 +29,4 @@ module.exports={
     editCard: (req, res) => {
         
     }
-}
+} 

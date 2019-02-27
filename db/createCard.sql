@@ -9,8 +9,8 @@ insert into player_cards(
     year,
     front_url,
     back_url
-)(
-    ${brand},
+)values(
+    ${brand}, 
     ${player_name},
     ${sport},
     ${position},
@@ -21,4 +21,4 @@ insert into player_cards(
     ${front_url},
     ${back_url}
 )
-returning brand, player_name, sport, team, manufacture, condition, user_id, year;
+returning brand, player_name, sport, team, condition, user_id, year;

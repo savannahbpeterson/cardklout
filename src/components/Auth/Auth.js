@@ -22,7 +22,7 @@ const styles = {
         background: '#404040',
         display: 'flex',
         padding: 0,
-        height: 240
+        height: 240 
     },
     bgLayerTitle: {
         color: '#f2f2f2',

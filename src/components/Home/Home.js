@@ -2,10 +2,7 @@ import React, { Component } from 'react'
 import './Home.css'
 import {Link} from 'react-router-dom'
 import axios from 'axios'
-import { connect } from 'react-redux'
 import CardModal from './Modal/CardModal'
-// import { showUser } from './../../ducks/reducer'
-// import Card from './../Card/Card'
 
 const styles = {
     logoTxt: {
@@ -80,18 +77,26 @@ class Home extends Component {
         axios.get('/home/getUserCards')
         .then(res => {
             this.setState({usersCards: res.data})
-            console.log(res.data)
+            // console.log(res.data)
         })
         .catch(err => {
             console.log(err)
         })
     }
 
+
     deleteCard = (id) => {
-        axios.delete(`/api/home/:id`)
-        .then(() => {this.fireCards()}
-        // console.log('Its working!')
-    )}
+        axios.delete(`/api/delete/${id}`)
+        .then(res => {
+            // console.log('working', res.data)
+            this.setState({
+                usersCards: res.data
+            })
+            // console.log(res.data)
+        })
+    }
+
+
 
     editCard = () => {
         axios.put(`/home/edit`)
@@ -99,12 +104,47 @@ class Home extends Component {
     )}
 
     render() {
-        console.log(this)
-        // let displayedCards = this.state.usersCards.map(card => {
-        //     return(
-        //         <div key={card.card_id}><h1>{card.player_name}</h1></div>
-        //     )
-        // })
+        const mapOverCards = this.state.usersCards.map((item, index) => {
+            return(
+                <div onClick={()=> this.toggleCardModal(index)} style={{textDecoration: 'none', color: '#8c8c8c'}} key={index}>
+                    <tr style={{border: '0px'}}>
+                        <td style={{color: '#1aa3ff', cursor: 'pointer'}}>{item.card_id}</td>
+                        <td>{item.player_name}</td>
+                        <td>{item.sport}</td>
+                        <td>{item.year}</td>
+                        <td>{item.team}</td>
+                        <td>{item.position}</td>
+                        <td>{item.brand}</td>
+                        <td>{item.condition}</td>
+                        <td>{item.clout}
+                             {
+                                item.clout < 50 &&
+                                <i style={{color: '#cc0000'}}
+                                className="fas fa-arrow-from-top"></i>
+                            }
+                            {
+                                item.clout >= 50 &&
+                                <i style={{color: '#00b300'}} className="fas fa-arrow-from-bottom"></i>
+                            }
+                            <button onClick={e => {
+                                e.stopPropagation()
+                                this.deleteCard(item.card_id)
+                            }} style={styles.trashcan} type="button" class="btn btn-default btn-sm">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+
+                            <button onClick={e => {
+                                e.stopPropagation()
+                                this.editCard(item.card_id)
+                            }} style={styles.trashcan} type="button" class="btn btn-default btn-sm">
+                               <span class="glyphicon glyphicon-pencil"></span>
+                            </button>
+                        </td>
+                        </tr>
+                </div>
+            )
+        })
+    
         return (
             <div>
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"/>
@@ -160,7 +200,7 @@ class Home extends Component {
                                             <th className='col-sm-1'>Sport</th>
                                             <th className='col-sm-1'>Year</th>
                                             <th className='col-sm-1'>Team</th>
-                                            <th className='col-sm-1'>Manufacture</th>
+                                            <th className='col-sm-1'>Brand</th>
                                             <th className='col-sm-1'>Brand</th>
                                             <th className='col-sm-1'>Condition</th>
                                             <th className='col-sm-1'>Clout</th>
@@ -169,47 +209,8 @@ class Home extends Component {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    {
-                                        this.state.usersCards.map((item, index) => {
-                                            return(
-                                                <div onClick={()=> this.toggleCardModal(index)} style={{textDecoration: 'none', color: '#8c8c8c'}} key={index}>
-                                                    <tr style={{border: '0px'}}>
-                                                        <td style={{color: '#1aa3ff'}}>{item.card_id}</td>
-                                                        <td>{item.player_name}</td>
-                                                        <td>{item.sport}</td>
-                                                        <td>{item.year}</td>
-                                                        <td>{item.team}</td>
-                                                        <td>{item.manufacture}</td>
-                                                        <td>{item.brand}</td>
-                                                        <td>{item.condition}</td>
-                                                        <td>{item.clout}
-                                                            {/* {
-                                                                item.clout < 50 &&
-                                                                <i style={{color: '#cc0000'}}
-                                                                className="fas fa-arrow-from-top"></i>
-                                                            }
-                                                            {
-                                                                item.clout >= 50 &&
-                                                                <i style={{color: '#00b300'}} className="fas fa-arrow-from-bottom"></i>
-                                                            } */}
-                                                            <button onClick={e => {
-                                                                e.stopPropagation()
-                                                                this.deleteCard(item.card_id)
-                                                            }} style={styles.trashcan} type="button" class="btn btn-default btn-sm">
-                                                                <span class="glyphicon glyphicon-trash"></span>
-                                                            </button>
-                                                            <button onClick={e => {
-                                                                e.stopPropagation()
-                                                                this.editCard(item.card_id)
-                                                            }} style={styles.trashcan} type="button" class="btn btn-default btn-sm">
-                                                                <span class="glyphicon glyphicon-pencil"></span> 
-                                                            </button>
-                                                        </td>
-                                                        </tr>
-                                                </div>
-                                            )
-                                        })
-                                    }
+                                    
+                                        {mapOverCards}
                                     </tbody>
                                 </table>
                             </div>
@@ -218,16 +219,9 @@ class Home extends Component {
                 </div>
             </div>
             </div>
-                                    // <button onClick={() => this.deleteCard(item.card_id)} style={styles.trashcan}><i class="fa fa-trash"></i></button>
         )
     }
 }
 
-function mapStateToProps (state) {
-    const {user} = state
-    return {
-        user
-    }
-}
 
-export default connect(mapStateToProps, {})(Home);
+export default Home;

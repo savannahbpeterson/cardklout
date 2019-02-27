@@ -42,25 +42,7 @@ class Home extends Component {
         this.state = {
             usersCards: [],
             showCardModal: false,
-            modalCard: {},
-            // data: [
-            //     {ID: 'M12345678', PlayerName: 'Jim Rice', Sport: 'Baseball', Year: '1976', Team: 'Boston Red Sox',Manufacture: 'Topps Co', Brand: 'Topps Chewing Gum', Condition: 'POOR', clout:'27'},
-            //     {ID: 'M12345678', PlayerName: 'Aaron Judge', Sport: 'Baseball', Year: '2017', Team: 'New York Yankees',Manufacture: 'Panini', Brand: 'Dimond Kings', Condition: 'PRISTINE', clout:'88'},
-            //     {ID: 'M12345678', PlayerName: 'Victor Oladipo', Sport: 'Basketball', Year: '2014-15', Team: 'Orlando Magic',Manufacture: 'Panini', Brand: 'Prestige', Condition: 'GOOD', clout:'76'},
-            //     {ID: 'M12345678', PlayerName: 'Raymond Berry', Sport: 'Baseball', Year: '2018', Team: 'Baltimore Colts',Manufacture: 'Panini', Brand: 'Classics Football', Condition: 'AVG', clout:'12'},
-            //     {ID: 'M12345678', PlayerName: 'Jim Rice', Sport: 'Baseball', Year: '1976', Team: 'Boston Red Sox',Manufacture: 'Topps Co', Brand: 'Topps Chewing Gum', Condition: 'POOR', clout:'27'},
-            //     {ID: 'M12345678', PlayerName: 'Jim Rice', Sport: 'Baseball', Year: '1976', Team: 'Boston Red Sox',Manufacture: 'Topps Co', Brand: 'Topps Chewing Gum', Condition: 'POOR', clout:'27'},
-            //     {ID: 'M12345678', PlayerName: 'Jim Rice', Sport: 'Baseball', Year: '1976', Team: 'Boston Red Sox',Manufacture: 'Topps Co', Brand: 'Topps Chewing Gum', Condition: 'POOR', clout:'27'},
-            //     {ID: 'M12345678', PlayerName: 'Jim Rice', Sport: 'Baseball', Year: '1976', Team: 'Boston Red Sox',Manufacture: 'Topps Co', Brand: 'Topps Chewing Gum', Condition: 'POOR', clout:'27'},
-            //     {ID: 'M12345678', PlayerName: 'Jim Rice', Sport: 'Baseball', Year: '1976', Team: 'Boston Red Sox',Manufacture: 'Topps Co', Brand: 'Topps Chewing Gum', Condition: 'POOR', clout:'27'},
-            //     {ID: 'M12345678', PlayerName: 'Jim Rice', Sport: 'Baseball', Year: '1976', Team: 'Boston Red Sox',Manufacture: 'Topps Co', Brand: 'Topps Chewing Gum', Condition: 'POOR', clout:'27'},
-            //     {ID: 'M12345678', PlayerName: 'Jim Rice', Sport: 'Baseball', Year: '1976', Team: 'Boston Red Sox',Manufacture: 'Topps Co', Brand: 'Topps Chewing Gum', Condition: 'POOR', clout:'27'},
-            //     {ID: 'M12345678', PlayerName: 'Jim Rice', Sport: 'Baseball', Year: '1976', Team: 'Boston Red Sox',Manufacture: 'Topps Co', Brand: 'Topps Chewing Gum', Condition: 'POOR', clout:'27'},
-            //     {ID: 'M12345678', PlayerName: 'Jim Rice', Sport: 'Baseball', Year: '1976', Team: 'Boston Red Sox',Manufacture: 'Topps Co', Brand: 'Topps Chewing Gum', Condition: 'POOR', clout:'27'},
-            //     {ID: 'M12345678', PlayerName: 'Jim Rice', Sport: 'Baseball', Year: '1976', Team: 'Boston Red Sox',Manufacture: 'Topps Co', Brand: 'Topps Chewing Gum', Condition: 'POOR', clout:'27'},
-            //     {ID: 'M12345678', PlayerName: 'Jim Rice', Sport: 'Baseball', Year: '1976', Team: 'Boston Red Sox',Manufacture: 'Topps Co', Brand: 'Topps Chewing Gum', Condition: 'POOR', clout:'27'},
-            //     {ID: 'M12345678', PlayerName: 'Jim Rice', Sport: 'Baseball', Year: '1976', Team: 'Boston Red Sox',Manufacture: 'Topps Co', Brand: 'Topps Chewing Gum', Condition: 'POOR', clout:'27'},
-            // ]
+            modalCard: {}
         }
     }
     
@@ -77,7 +59,6 @@ class Home extends Component {
         axios.get('/home/getUserCards')
         .then(res => {
             this.setState({usersCards: res.data})
-            // console.log(res.data)
         })
         .catch(err => {
             console.log(err)
@@ -88,11 +69,9 @@ class Home extends Component {
     deleteCard = (id) => {
         axios.delete(`/api/delete/${id}`)
         .then(res => {
-            // console.log('working', res.data)
             this.setState({
                 usersCards: res.data
             })
-            // console.log(res.data)
         })
     }
 

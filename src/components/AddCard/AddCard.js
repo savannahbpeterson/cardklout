@@ -1,10 +1,6 @@
 import React, { Component } from 'react'
 import './AddCard.css'
 import axios from 'axios'
-// import { v4 as photoUrlString } from 'uuid'
-// import { Link } from 'react-router-dom'
-// import Dropzone from 'react-dropzone';
-// import Spinner from 'react-spinkit';
 import InputBoxes from './InputBoxes';
 import {Link} from 'react-router-dom'
 
@@ -104,8 +100,6 @@ class AddCard extends Component {
                 { name: 'Sport', edit: true, value: '' },
                 { name: 'Position', edit: true, value: '' },
                 { name: 'Condition', edit: true, value: '' },
-                // { name: 'front_url', edit: true, value: ''},
-                // { name: 'back_url', edit: true, value: ''}
             ],
 
             isUploading: false,
@@ -157,7 +151,6 @@ class AddCard extends Component {
             }
         }).then((response) => {
             const { signedRequest, url } = response.data
-            console.log(response.data)
             this.uploadFile(file, signedRequest, url, isFront)
         }).catch(err => {
             console.log(err)
@@ -180,7 +173,6 @@ class AddCard extends Component {
 
         axios.put(signedRequest, file, options)
             .then(response => {
-                console.log(response)
                 const location = isFront ? 'front_url' : 'back_url'
                 this.setState({[location]: url})
             })
@@ -223,9 +215,6 @@ class AddCard extends Component {
 
 
     render() {
-        // let mapOverCardValues = this.state.CardValues.map((val, i, arr) => {
-        //     return <InputBoxes key={i} val={val} updateFn={this.updateCategory} submitBtn={this.submit} edit={this.edit} />
-        // })
         const { isUploading } = this.state
         return (
             <div className="AddCard_page">
@@ -303,7 +292,6 @@ class AddCard extends Component {
                                                 
                                             </div>
                                             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                                                {/* <i style={{ color: '#1aa3ff', fontSize: 50, position: 'absolute' }} className="fas fa-plus"></i> */}
                                                 <img src={`${process.env.PUBLIC_URL}/assets/images/frontupload.png`} alt="" />
                                             </div>
                                             <div style={{ display: 'flex', justifyContent: 'center', paddingTop: '3%' }}>

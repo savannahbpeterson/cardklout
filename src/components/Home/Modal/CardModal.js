@@ -99,7 +99,6 @@ class CardModal extends Component {
                         <button style={{position: 'absolute', color: 'grey', border: 'none', left: 8}} type="button" class="btn btn-default btn-sm" onClick={() => this.props.toggleCardModal()}>
                             <span class="glyphicon glyphicon-remove"></span> 
                         </button>
-                    {/* <h3>{player_name}</h3> */}
                     </div>
                 </div>
                 <div className="container-fluid" style={{paddingLeft: '5%', paddingRight: '5%', paddingTop: '1%'}}>
@@ -278,16 +277,5 @@ class CardModal extends Component {
     }
 }
 
-
-//         return(
-//             <div onClick={() => this.props.toggleCardModal()} style={{ position: 'absolute', height: '100vh', width: '100vw', zIndex: 4}}>
-//                 <div style={{background: 'pink', height: '90vh', width: '90vw', position: 'absolute', zIndex: 5, left: '5vw', top: '5vh'}}>
-//                     <p style={{position: 'absolute'}} onClick={() => this.props.toggleCardModal()}>x</p>
-//                     <h3>{player_name}</h3>
-//                 </div>
-//             </div>
-//         )
-//     }
-// }
 
 export default CardModal;

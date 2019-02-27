@@ -16,7 +16,6 @@ module.exports ={
         if (!user) {
             return res.sendStatus(418)
         }
-        // const foundUser = bcrypt.compareSync(password, user.password)
         const foundUser = user;
 
         if(foundUser) {
@@ -29,7 +28,6 @@ module.exports ={
     },
     getUser: (req, res) => {
         const {user} = req.session;
-        // console.log({user});
         if(user) {
             res.status(200).send(user)
         }else{

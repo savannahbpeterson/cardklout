@@ -141,9 +141,7 @@ class Auth extends Component {
         const { username, password } = this.state;
         axios.post("/auth/login", { username, password })
             .then(res => {
-                console.log(res)
                 this.props.updateUser(res.data)
-                console.log(this.props.history)
                 this.props.history.push("/home")
             })
             .catch(err => {
@@ -151,9 +149,6 @@ class Auth extends Component {
             })
     }
     render() {
-        console.log(this.state)
-        console.log(this.props)
-        // const { username, password } = this.state;
         return (
             <div className="row">
                 <div className="col-sm-12" style={styles.bg}>

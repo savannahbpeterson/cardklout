@@ -1,5 +1,5 @@
 @media only screen and (max-width: 900px) {
-    /* .mobile {
+    .mobile {
         display: block !important;
     }
     .title {
@@ -16,6 +16,6 @@
     }
     .col-sm-6 {
         max-width: 100% !important;
-    } */
+    }
 
 }

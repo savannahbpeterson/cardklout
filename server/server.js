@@ -26,6 +26,8 @@ app.use(session({
   maxAge: null
 }))
 
+app.use( express.static( `${__dirname}/../build` ) );
+
 //AUTHENTICATION
 app.post("/auth/login", authCtrl.login);
 app.get('/api/user', authCtrl.getUser)

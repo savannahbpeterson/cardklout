@@ -183,9 +183,6 @@ class Auth extends Component {
                                 </form>
                             </div>
                         </div>
-                        {/* <div className="col-sm-12" style={styles.footer}>
-                            <p style={styles.footerTxt}>Can't get in to your account? Did you <a href="#" style={{color: '#000000', textDecoration: 'underline'}}>forget your password?</a></p>
-                        </div> */}
                     </div>
                     <div className="col-sm-3"></div>
                 </div>

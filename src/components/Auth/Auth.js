@@ -171,15 +171,15 @@ class Auth extends Component {
                                         <input type="checkbox" className="form-check-input" id="exampleCheck1" />
                                         <label style={{fontSize: 12}} className="form-check-label" htmlFor="exampleCheck1">keep me signed in</label>
                                     </div>
-                                    <button style={styles.btn} type="submit" className="btn btn-primary" onClick={this.login}>LOG IN</button>
+                                    <button type="button" style={styles.btn} className="btn btn-primary" onClick={this.login}>LOG IN</button>
                                 </form>
                             </div>
                             <div className="col-sm-6 form2">
                                 <form style={styles.formBtn}>
-                                    <button style={styles.accountBtn} type="submit" className="btn btn-primary">REQUEST ACCOUNT</button>
+                                    <button type="button" style={styles.accountBtn} className="btn btn-primary">REQUEST ACCOUNT</button>
                                     <label style={styles.divide}>OR</label>
-                                    <button style={styles.facebookBtn} type="submit" className="btn btn-primary">REQUEST WITH FACEBOOK</button>
-                                    <button style={styles.googleBtn} type="submit" className="btn btn-primary">REQUEST WITH GOOGLE</button>
+                                    <button type="button" style={styles.facebookBtn} className="btn btn-primary">REQUEST WITH FACEBOOK</button>
+                                    <button type="button" style={styles.googleBtn} rsclassName="btn btn-primary">REQUEST WITH GOOGLE</button>
                                 </form>
                             </div>
                         </div>

@@ -31,7 +31,8 @@ app.use( express.static( `${__dirname}/../build` ) );
 
 //AUTHENTICATION
 app.post("/auth/login", authCtrl.login);
-app.get('/api/user', authCtrl.getUser)
+app.get('/api/user', authCtrl.getUser);
+app.post("/auth/logout", authCtrl.logout);
 
 //USERS DATA (CARDS)
 app.get('/home/getUserCards', UDCtrl.getUserCards);

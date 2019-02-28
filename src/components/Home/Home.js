@@ -3,6 +3,7 @@ import './Home.css'
 import {Link} from 'react-router-dom'
 import axios from 'axios'
 import CardModal from './Modal/CardModal'
+import {clearUser} from "./../../ducks/reducer"
 
 const styles = {
     logoTxt: {
@@ -82,6 +83,19 @@ class Home extends Component {
         .then(() => {this.toggleCardModal()}
     )}
 
+
+    logout = () => {
+        axios
+          .post("/auth/logout")
+          .then(res => {
+            this.props.clearUser();
+            this.props.history.push("/");
+          })
+          .catch(err => {
+            console.log(err);
+          });
+      };
+
     render() {
         const mapOverCards = this.state.usersCards.map((item, index) => {
             return(
@@ -141,6 +155,10 @@ class Home extends Component {
                             <div className="col-sm-6" style={{padding:0, textAlign: 'right'}}>
                                 <button className="btn btn-default" style={styles.btn}>
                                     <Link to={'/addCard'} style={{textDecoration: 'none'}}>ADD CARD</Link>
+                                </button>
+                                <button onClick={this.logout} className="btn btn-default" style={styles.btn}>
+                                   <Link to="/">LOGOUT</Link> 
+
                                 </button>
                             </div>
                         </div>

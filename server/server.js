@@ -1,14 +1,15 @@
-require('dotenv').config()
 const express = require('express')
 const bodyParser = require('body-parser')
 const massive = require('massive');
 const session = require('express-session')
+const path = require('path')
 
 const authCtrl = require('./controllers/authController')
 const UDCtrl = require('./controllers/userDataController')
 const AddCtrl = require('./controllers/addCardController')
 const amazonCrtl = require('./controllers/amazonController')
 
+require('dotenv').config({path: path.join(__dirname, "../.env")});
 const app = express()
 
 const {SERVER_PORT, SESSION_SECRET, CONNECTION_STRING} = process.env

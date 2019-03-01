@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import axios from 'axios'
 
 const styles = {
     titleTxt1: {
@@ -33,13 +34,14 @@ const styles = {
         fontSize: 18
     },
     titleTxt5: {
-        display: 'flex',
+        // display: 'flex',
         fontFamily: 'sans-serif',
-        color: '#b3b3b3',
-        fontSize: 15,
-        marginBottom: 0,
-        fontWeight: 300,
-        marginTop: 10
+        color: '#CCCCCC',
+        fontSize: 20,
+        marginBottom: 0
+        // fontWeight: 300,
+        // marginTop: 10
+        
     },
     titleTxt: {
         fontFamily: 'sans-serif',
@@ -67,13 +69,26 @@ const styles = {
         border: '1px solid #cccccc'
     },
     btn: {
+        display: 'flex',
         boxShadow: "0 3px 18px rgba(203, 203, 203, 0.49)",
         border: '1px solid #dddddd',
         background: '#f5f5f5',
         fontSize: '30px',
-        color: '#c7c7c7',
+        color: '#18a3ff',
         fontWeight: 600,
         width: 140,
+        height: 55,
+        marginTop:'5%'
+    },
+    editBtn: {
+        display: 'flex',
+        boxShadow: "0 3px 18px rgba(203, 203, 203, 0.49)",
+        border: '1px solid #dddddd',
+        background: '#f5f5f5',
+        fontSize: '30px',
+        color: '#18a3ff',
+        fontWeight: 600,
+        width: 100,
         height: 55,
         marginTop:'5%'
     },
@@ -84,25 +99,60 @@ const styles = {
 }
 
 class CardModal extends Component {
+    constructor(props){
+        super(props)
+        
+        this.state= {
+            editMode: false,
+            player_name: props.modalCard.player_name,
+            year: props.modalCard.year,
+            sport: props.modalCard.sport,
+            team: props.modalCard.team,
+            brand: props.modalCard.brand,
+            position: props.modalCard.position
+        }
+    }
+
+
+editModeToggle = () => {
+    console.log("editMode")
+    this.setState({editMode: !this.state.editMode})
+}
+
+editCard = () => {
+    const {brand, player_name, sport, position, team, year} = this.state
+    axios.put('/home/edit', {brand, player_name, sport, position, team, condition: this.props.modalCard.condition, user_id: this.props.modalCard.user_id, year, front_url: this.props.modalCard.front_url, back_url: this.props.modalCard.back_url, card_id: this.props.modalCard.card_id})
+    .then((res) => {
+        console.log(res.data)
+        this.setState({editMode: false})
+    })
+
+}
+
+handleChange = (val, key) => {
+    this.setState({[key]: val})
+}
+
     render() {
+        console.log(this.state)
         const { card_id, player_name, sport, year, team, manufacturer, brand, condition, clout, position, front_url, back_url} = this.props.modalCard
         console.log(111111111, front_url, back_url)
         const {url} = "https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2380057.m570.l1311.R1.TR3.TRC0.A0.H0.Xjim+rice+base.TRS0&_nkw=jim+rice+baseball+cards&_sacat=0"
         return (
             <div>
                 {/* <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/> */}
-                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"></link>
-                <div onClick={() => this.props.toggleCardModal()} style={{ position: 'absolute', height: '100vh', width: '100vw', zIndex: 4}}>
-                    <div style={{height: '90vh', width: '90vw', position: 'absolute', zIndex: 5, left: '5vw', top: '5vh'}}>
+                {/* <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"></link>
+                <div  style={{ position: 'absolute', height: '100vh', width: '100vw', zIndex: 4}}> */}
+                    {/* <div style={{height: '90vh', width: '90vw', position: 'absolute', zIndex: 5, left: '5vw', top: '5vh'}}> */}
                         {/* <p style={{position: 'absolute', fontSize: 24, fontWeight: 600}} onClick={() => this.props.toggleCardModal()}>X</p> */}
                         {/* <button style={{position: 'absolute'}} type="button" class="close" aria-label="Close" onClick={() => this.props.toggleCardModal()}>
                             <span aria-hidden="true">&times;</span>
                         </button> */}
-                        <button style={{position: 'absolute', color: 'grey', border: 'none', left: 6}} type="button" class="btn btn-default btn-sm" onClick={() => this.props.toggleCardModal()}>
+                        {/* <button style={{position: 'absolute', color: 'grey', border: 'none', left: 6}} type="button" class="btn btn-default btn-sm" onClick={() => this.props.toggleCardModal()}>
                             <span class="glyphicon glyphicon-remove"></span> 
-                        </button>
-                    </div>
-                </div>
+                        </button> */}
+                    {/* </div> */}
+                {/* </div> */}
                 <div className="container-fluid" style={{paddingLeft: '5%', paddingRight: '5%', paddingTop: '1%'}}>
                     <div className="row">
                         <div className="col-sm-12" style={{display: 'flex'}}>
@@ -161,8 +211,8 @@ class CardModal extends Component {
                                         </div>
                                             <img src={front_url} style={{
                                                         position: 'relative',
-                                                        width: 160,
-                                                        height: 210,
+                                                        width: 300,
+                                                        height: 450,
                                                         borderWidth: 10,
                                                         margin: '20px auto',
                                                         borderColor: 'rgb(102, 102, 102)',
@@ -192,8 +242,8 @@ class CardModal extends Component {
                                         </div>
                                         <img src={back_url} style={{
                                                         position: 'relative',
-                                                        width: 160,
-                                                        height: 210,
+                                                        width: 300,
+                                                        height: 450,
                                                         borderWidth: 10,
                                                         margin: '20px auto',
                                                         borderColor: 'rgb(102, 102, 102)',
@@ -224,16 +274,31 @@ class CardModal extends Component {
                                     <div className="col-sm-6" style={{padding: 0}}>
                                         <div>
                                             <div style={{display: 'flex', alignItems: 'end', bottom: 20}}>
+                                            
                                                 <p style={styles.titleTxt5}>Player Name:</p>
                                                 {/* <i style={styles.arrowDown} className="fas fa-caret-down"></i> */}
-                                            </div>
-                                            {/*<hr style={{width: 15, border: '2px solid #000000'}}/>*/}
-                                            <p style={{display: 'flex', fontSize: 30, lineHeight: 0.6, color: '#696969', fontWeight: 600}}>{player_name}</p>
+                                            </div>                                            
+                                            {this.state.editMode
+                                            ?
+                                            <input type="text" onChange={(e) => this.handleChange(e.target.value, 'player_name')} value={this.state.player_name} style={{width: 400, height: 40, display: 'flex', border: 'solid .5px black', fontSize: 40, lineHeight: 0.6, color: '#696969', fontWeight: 600}}/>
+                                            :
+                                            <p style={{display: 'flex', fontSize: 40, lineHeight: 0.6, color: '#696969', fontWeight: 600}}>{this.state.player_name}</p>
+                                            
+                                            }
+
+
                                             <div style={{display: 'flex', alignItems: 'end'}}>
                                                 <p style={styles.titleTxt5}>Card Year:</p>
                                                 {/* <i style={styles.arrowDown} className="fas fa-caret-down"></i> */}
                                             </div>
-                                            <p style={{display: 'flex', fontSize: 30, lineHeight: 0.6, color: '#696969', fontWeight: 600}}>{year}</p>
+                                            {this.state.editMode
+                                            ?
+                                            <input type="text" onChange={(e) => this.handleChange(e.target.value, 'year')} value={this.state.year} style={{width: 400, height: 40, display: 'flex', border: 'solid .5px black', fontSize: 40, lineHeight: 0.6, color: '#696969', fontWeight: 600}}/>
+                                            :
+                                            <p style={{display: 'flex', fontSize: 40, lineHeight: 0.6, color: '#696969', fontWeight: 600}}>{this.state.year}</p>
+                                            
+                                            }
+
                                         </div>
                                     </div>
                                     <div className="col-sm-6" style={{display: 'flex', padding: 0, justifyContent: 'flex-end'}}>
@@ -276,28 +341,63 @@ class CardModal extends Component {
                                         <p style={styles.titleTxt5}>Team:</p>
                                         {/* <i style={styles.arrowDown} className="fas fa-caret-down"></i> */}
                                     </div>
-                                    <p style={{display: 'flex',fontSize: 30, lineHeight: 0.6, color: '#696969', fontWeight: 600}}>{team}</p>
+                                    {this.state.editMode
+                                            ?
+                                            <input type="text" onChange={(e) => this.handleChange(e.target.value, 'team')} value={this.state.team} style={{width: 400, height: 40, display: 'flex', border: 'solid .5px black', fontSize: 40, lineHeight: 0.6, color: '#696969', fontWeight: 600}}/>
+                                            :
+                                            <p style={{display: 'flex', fontSize: 40, lineHeight: 0.6, color: '#696969', fontWeight: 600}}>{this.state.team}</p>
+                                            
+                                            }
+
                                     {/* <div style={{display: 'flex', alignItems: 'end'}}>
                                         <p style={styles.titleTxt5}>Manufacture:</p>
                                         <i style={styles.arrowDown} className="fas fa-caret-down"></i>
                                     </div> */}
-                                    <p style={{display: 'flex',fontSize: 30, lineHeight: 0.6, color: '#696969', fontWeight: 600}}>{manufacturer}</p>
+                                    <p style={{display: 'flex',fontSize: 40, lineHeight: 0.6, color: '#525252', fontWeight: 600}}>{manufacturer}</p>
                                     <div style={{display: 'flex', alignItems: 'end'}}>
                                         <p style={styles.titleTxt5}>Brand:</p>
                                         {/* <i style={styles.arrowDown} className="fas fa-caret-down"></i> */}
                                     </div>
-                                    <p style={{display: 'flex',fontSize: 30, lineHeight: 0.6, color: '#696969', fontWeight: 600}}>{brand}</p>
+                                    {this.state.editMode
+                                            ?
+                                            <input type="text" onChange={(e) => this.handleChange(e.target.value, 'brand')} value={this.state.brand} style={{width: 400, height: 40, display: 'flex', border: 'solid .5px black', fontSize: 40, lineHeight: 0.6, color: '#696969', fontWeight: 600}}/>
+                                            :
+                                            <p style={{display: 'flex', fontSize: 40, lineHeight: 0.6, color: '#696969', fontWeight: 600}}>{this.state.brand}</p>
+                                            
+                                            }
                                     <div style={{display: 'flex', alignItems: 'end'}}>
                                         <p style={styles.titleTxt5}>Sport:</p>
                                         {/* <i style={styles.arrowDown} className="fas fa-caret-down"></i> */}
                                     </div>
-                                    <p style={{display: 'flex',fontSize: 30, lineHeight: 0.6, color: '#696969', fontWeight: 600}}>{team}</p>
+                                    {this.state.editMode
+                                            ?
+                                            <input type="text" onChange={(e) => this.handleChange(e.target.value, 'sport')} value={this.state.sport} style={{width: 400, height: 40, display: 'flex', border: 'solid .5px black', fontSize: 40, lineHeight: 0.6, color: '#696969', fontWeight: 600}}/>
+                                            :
+                                            <p style={{display: 'flex', fontSize: 40, lineHeight: 0.6, color: '#696969', fontWeight: 600}}>{this.state.sport}</p>
+                                            
+                                            }
                                     <div style={{display: 'flex', alignItems: 'end'}}>
                                         <p style={styles.titleTxt5}>Position:</p>
                                         {/* <i style={styles.arrowDown} className="fas fa-caret-down"></i> */}
                                     </div>
-                                    <p style={{display: 'flex',fontSize: 30, lineHeight: 0.6, color: '#696969', fontWeight: 600}}>{position}</p>
-                                    {/* <i style={{color: '#1aa3ff', fontSize: 30, paddingTop: 10}} className="fas fa-plus-circle"></i> */}
+                                    {this.state.editMode
+                                            ?
+                                            <input type="text" onChange={(e) => this.handleChange(e.target.value, 'position')} value={this.state.position} style={{width: 400, height: 40, display: 'flex', border: 'solid .5px black', fontSize: 40, lineHeight: 0.6, color: '#696969', fontWeight: 600}}/>
+                                            :
+                                            <p style={{display: 'flex', fontSize: 40, lineHeight: 0.6, color: '#696969', fontWeight: 600}}>{this.state.position}</p>
+                                            
+                                            }
+                                    {/* <i style={{color: '#1aa3ff', fontSize: 40, paddingTop: 10}} className="fas fa-plus-circle"></i> */}
+
+
+                                    {this.state.editMode
+                                    ?
+                                    <button style={styles.editBtn} onClick = {this.editCard}>SAVE</button>
+                                    :
+                                    <button className="btn btn-default" style={styles.editBtn} onClick={this.editModeToggle}>EDIT</button>
+
+                                    }
+                                    
                                 </div>
                             </div>
                         </div>

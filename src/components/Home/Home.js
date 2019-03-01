@@ -8,7 +8,7 @@ import {clearUser} from "./../../ducks/reducer"
 const styles = {
     logoTxt: {
         display: 'flex',
-        fontSize: '3.6vw',
+        fontSize: '2.6vw',
         fontWeight: 700,
         color: '#000000',
         fontFamily: 'sans-serif'
@@ -19,10 +19,11 @@ const styles = {
         fontSize: '1.3vw',
         color: '#1aa3ff',
         fontWeight: 600,
-        padding: '5px 15px'
+        padding: '5px 15px',
+        // textDecoration: 'none'
     },
     headerTxt: {
-        fontSize: 20,
+        fontSize: 30,
         fontWeight: 400,
         color: '#d9d9d9',
         fontFamily: 'sans-serif',
@@ -32,7 +33,7 @@ const styles = {
     trashcan: {
         border: 'none',
         color: '#696969',
-        fontSize: 15,
+        fontSize: 20,
         curser: 'pointer'
     }
 }
@@ -43,7 +44,9 @@ class Home extends Component {
         this.state = {
             usersCards: [],
             showCardModal: false,
-            modalCard: {}
+            modalCard: {},
+            editMode: false,
+            text: ''
         }
     }
     
@@ -78,10 +81,20 @@ class Home extends Component {
 
 
 
-    editCard = () => {
-        axios.put(`/home/edit`)
-        .then(() => {this.toggleCardModal()}
+    editCard = (id) => {
+        let textObj = {
+            text: this.state.text
+        }
+        this.setState({editMode: !this.state.editMode})
+        axios.put(`/home/edit` + id, textObj)
+        .then(response => {
+            this.setState({usersCards: response.data})
+        }
     )}
+
+    editName(text){
+        this.setState({text: text})
+    }
 
 
     logout = () => {
@@ -101,15 +114,15 @@ class Home extends Component {
             return(
                 <div onClick={()=> this.toggleCardModal(index)} style={{textDecoration: 'none', color: '#8c8c8c'}} key={index}>
                     <tr style={{border: '0px'}}>
-                        <td style={{color: '#1aa3ff', cursor: 'pointer'}}>{item.card_id}</td>
-                        <td>{item.player_name}</td>
-                        <td>{item.sport}</td>
-                        <td>{item.year}</td>
-                        <td>{item.team}</td>
-                        <td>{item.position}</td>
-                        <td>{item.brand}</td>
-                        <td>{item.condition}</td>
-                        <td>{item.clout}
+                        <td style={{color: '#1aa3ff', cursor: 'pointer', fontSize: 30}}>{item.card_id}</td>
+                        <td style={{fontSize: 20}}>{item.player_name}</td>
+                        <td style={{fontSize: 20}}>{item.sport}</td>
+                        <td style={{fontSize: 20}}>{item.year}</td>
+                        <td style={{fontSize: 19}}>{item.team}</td>
+                        <td style={{fontSize: 20}}>{item.position}</td>
+                        <td style={{fontSize: 18}}>{item.brand}</td>
+                        <td style={{fontSize: 20}}>{item.condition}</td>
+                        <td style={{fontSize: 20}}>{item.clout}
                              {
                                 item.clout < 50 &&
                                 <i style={{color: '#cc0000'}}
@@ -126,11 +139,10 @@ class Home extends Component {
                                 <span class="glyphicon glyphicon-trash"></span>
                             </button>
 
-                            <button onClick={e => {
-                                e.stopPropagation()
-                                this.editCard(item.card_id)
+                            <button onClick={e => {e.stopPropagation() 
+                            this.editCard(item.card_id)
                             }} style={styles.trashcan} type="button" class="btn btn-default btn-sm">
-                               <Link to="/card"><span class="glyphicon glyphicon-pencil"></span></Link>
+                               <span class="glyphicon glyphicon-pencil"></span>
                             </button>
                         </td>
                         </tr>
@@ -190,14 +202,14 @@ class Home extends Component {
                         <div className="col-sm-12" >
                             <div className="table-responsive-sm">
                                 <table className="table fixed_header">
-                                    <thead style={{fontSize: 18, fontWeight: 300, border: '1px solid'}}>
+                                    <thead style={{fontSize: 20, fontWeight: 300, border: '1px solid'}}>
                                         <tr>
                                             <th className='col-sm-1'>ID</th>
                                             <th className='col-sm-1`'>PlayerName</th>
                                             <th className='col-sm-1'>Sport</th>
                                             <th className='col-sm-1'>Year</th>
                                             <th className='col-sm-1'>Team</th>
-                                            <th className='col-sm-1'>Brand</th>
+                                            <th className='col-sm-1'>Postition</th>
                                             <th className='col-sm-1'>Brand</th>
                                             <th className='col-sm-1'>Condition</th>
                                             <th className='col-sm-1'>Clout</th>

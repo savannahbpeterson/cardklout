@@ -13,16 +13,15 @@ const styles = {
         height: "-webkit-fill-available",
     },
     title: {
-        fontSize: 40,
+        fontSize: 60,
         // margin: 0,
         fontWeight: 700,
         fontFamily: 'sans-serif'
     },
     bgLayer: {
-        background: '#404040',
+        background: '#575757',
         display: 'flex',
-        padding: 0,
-        height: 240 
+        padding: 0
     },
     bgLayerTitle: {
         color: '#f2f2f2',
@@ -68,16 +67,17 @@ const styles = {
         paddingTop: 5,
         paddingBottom: 5,
         marginBottom: 10,
-        fontSize: 12
+        fontSize: 18
     },
     googleBtn: {
         width: '100%',
-        background: '#ff1a1a',
+        background: '#e94236',
         border: 0,
         paddingTop: 5,
         paddingBottom: 5,
-        fontSize: 12,
-        marginTop: 13
+        marginTop: 10,
+        fontSize: 18,
+        color: 'white'
     },
     accountBtn: {
         width: '100%',
@@ -85,8 +85,8 @@ const styles = {
         border: 0,
         paddingTop: 5,
         paddingBottom: 5,
-        marginTop: 70,
-        fontSize: 12
+        marginTop: 85,
+        fontSize: 18
     },
     divide: {
         color: '#ffffff',

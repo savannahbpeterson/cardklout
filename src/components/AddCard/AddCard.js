@@ -6,9 +6,9 @@ import {Link} from 'react-router-dom'
 
 const styles = {
     titleTxt1: {
-        fontSize: 40,
+        fontSize: 60,
         fontWeight: 700,
-        marginRight: 100,
+        // marginRight: 100,
         fontFamily: 'sans-serif',
     },
     titleTxt2: {
@@ -19,7 +19,7 @@ const styles = {
         color: '#cccccc'
     },
     titleTxt3: {
-        fontSize: 70,
+        fontSize: 90,
         fontWeight: 700,
         fontFamily: 'sans-serif',
         color: '#cccccc',
@@ -33,8 +33,8 @@ const styles = {
     titleTxt5: {
         fontFamily: 'sans-serif',
         color: 'grey',
-        fontSize: 20,
-        marginBottom: 0
+        fontSize: 30,
+        marginTop: 10
     },
     arrowLeft: {
         opacity: 0.2,
@@ -52,7 +52,7 @@ const styles = {
     },
     bg: {
         background: '#e7e7e7',
-        height: 110,
+        height: 150,
         border: '.5px solid grey'
     },
     btn: {
@@ -275,8 +275,8 @@ class AddCard extends Component {
                                                     <input type="file" onChange={(e) => this.getSignedRequest(e, true)} style={{position: 'absolute', width: '100%', height: '100%', opacity: '0.0', zIndex: '2'}}/>
                                                     <img src={this.state.front_url === '' ? this.state.defaultFrontUrl : this.state.front_url} style={{
                                                         position: 'relative',
-                                                        width: 160,
-                                                        height: 210,
+                                                        width: 320,
+                                                        height: 450,
                                                         borderWidth: 10,
                                                         margin: '20px auto',
                                                         borderColor: 'rgb(102, 102, 102)',
@@ -310,8 +310,8 @@ class AddCard extends Component {
                                                     <input type="file" onChange={(e) => this.getSignedRequest(e, false)} style={{position: 'absolute', width: '100%', height: '100%', opacity: '0.0', zIndex: '2', left: 0, right: 0, top: 0, bottom: 0}}/>
                                                     <img src={this.state.back_url === '' ? this.state.defaultBackUrl : this.state.back_url} style={{
                                                         position: 'relative',
-                                                        width: 160,
-                                                        height: 210,
+                                                        width: 320,
+                                                        height: 450,
                                                         borderWidth: 10,
                                                         margin: '20px auto',
                                                         borderColor: 'rgb(102, 102, 102)',
@@ -349,11 +349,8 @@ class AddCard extends Component {
                                                     <i style={styles.arrowDown} className="fas fa-caret-down"></i>
                                                 </div>
                                                 <InputBoxes val={this.state.CardValues[0]} updateFn={this.updateCategory}/>
-                                                <div style={{ display: 'flex', alignItems: 'end' }}>
-                                                    <p style={styles.titleTxt5}>Card Year</p>
-                                                    <i style={styles.arrowDown} className="fas fa-caret-down"></i>
-                                                </div>
-                                                <InputBoxes val={this.state.CardValues[1]} updateFn={this.updateCategory}/>
+                                                
+                                                
                                             </div>
                                         </div>
                                         <div className="col-sm-6" style={{ display: 'flex', padding: 0, justifyContent: 'flex-end' }}>
@@ -390,11 +387,15 @@ class AddCard extends Component {
                                 </div>
                                 <div className="col-sm-6" style={{ display: 'block', padding: 0, paddingTop: 20 }}>
                                     <div>
+                                            <div style={{ display: 'flex', alignItems: 'end' }}>
+                                                    <p style={styles.titleTxt5}>Card Year</p>
+                                                    <i style={styles.arrowDown} className="fas fa-caret-down"></i>
+                                            </div>
+                                            <InputBoxes val={this.state.CardValues[1]} updateFn={this.updateCategory}/>
                                         <div style={{ display: 'flex', alignItems: 'end' }}>
                                             <p style={styles.titleTxt5}>Team</p>
                                             {/* <InputBoxes /> */}
                                             <i style={styles.arrowDown} className="fas fa-caret-down"></i>
-                                            
                                         </div>
                                         <InputBoxes val={this.state.CardValues[2]} updateFn={this.updateCategory} />
                                         <div style={{ display: 'flex', alignItems: 'end' }}>

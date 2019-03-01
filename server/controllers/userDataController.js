@@ -21,7 +21,7 @@ module.exports={
         }).catch((err) => {
             res.status(500).send({errorMessage: "Something went wrong. Unable to delete card"})
             console.log(err)
-        })
+        })  
     },
     editCard: (req, res) => {
         const db = req.app.get('db');
@@ -31,4 +31,4 @@ module.exports={
             res.status(200).send(response)
         })
     }
-} 
+}   

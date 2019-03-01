@@ -190,7 +190,7 @@ class Home extends Component {
                                 <p style={{color: '#d9d9d9', fontSize: 15}}>&nbsp;cards with avg</p>
                                 <p style={{color: '#a300cc',fontSize: 15}}>&nbsp;69</p>
                                 <p style={{color: '#d9d9d9', fontSize: 15}}>&nbsp;clout</p>
-                                
+                                  
                             </div>
                             <div>
                                 {/* <img style={{width: '50px'}} src={`${process.env.PUBLIC_URL}/assets/images/2.png`} alt="" /> */}

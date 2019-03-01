@@ -365,7 +365,7 @@ handleChange = (val, key) => {
                                             <p style={{display: 'flex', fontSize: 40, lineHeight: 0.6, color: '#696969', fontWeight: 600}}>{this.state.brand}</p>
                                             
                                             }
-                                    <div style={{display: 'flex', alignItems: 'end'}}>
+                                    <div style={{display: 'flex', alignItems: 'end'}}>  
                                         <p style={styles.titleTxt5}>Sport:</p>
                                         {/* <i style={styles.arrowDown} className="fas fa-caret-down"></i> */}
                                     </div>

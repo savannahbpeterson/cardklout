@@ -79,7 +79,7 @@ const styles = {
         fontSize: 30,
         color: '#e7e7e7'
     }
-}
+}  
 
 class Card extends Component {
     render() {
@@ -95,7 +95,7 @@ class Card extends Component {
                             <div className="col-sm-6" style={{padding: 0, paddingTop: '2%', display: 'block'}}>
                                 <div className="col-sm-12" style={{padding: 0, display: 'flex'}}>
                                     <div className="col-sm-6" style={{padding: 0}}>
-                                        <div className="col-sm-12" style={{display: 'flex', padding: 0}}>
+                                         <div className="col-sm-12" style={{display: 'flex', padding: 0}}>
                                             <div className="col-sm-6" style={{display: 'flex', padding: 0}}>
                                                 <div>
                                                     <p style={styles.titleTxtChange}>27</p>

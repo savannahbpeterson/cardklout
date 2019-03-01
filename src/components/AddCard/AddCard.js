@@ -347,7 +347,7 @@ class AddCard extends Component {
                                                 <div style={{ display: 'flex', alignItems: 'end' }}>
                                                     <p style={styles.titleTxt5}>Player Name</p>
                                                     <i style={styles.arrowDown} className="fas fa-caret-down"></i>
-                                                </div>
+                                                </div>  
                                                 <InputBoxes val={this.state.CardValues[0]} updateFn={this.updateCategory}/>
                                                 
                                                 

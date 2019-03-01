@@ -5,7 +5,7 @@ const {
     AWS_ACCESS_KEY_ID,
     AWS_SECRET_ACCESS_KEY,
 } = process.env;
-
+ 
 module.exports = {
     awsS3: (req, res) => {
         aws.config = {

@@ -10,4 +10,4 @@ set  brand = ${brand},
     front_url = ${front_url}, 
     back_url = ${back_url}
 where card_id = ${card_id}
-    returning *
+    returning *  

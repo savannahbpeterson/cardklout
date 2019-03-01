@@ -9,6 +9,6 @@ function InputBoxes(props) {
             </div>
         </div>
     )
-}
+} 
 
 export default InputBoxes;

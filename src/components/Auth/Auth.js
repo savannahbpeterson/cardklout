@@ -121,7 +121,7 @@ class Auth extends Component {
                     this.props.updateUser(res.data)
                     this.props.history.push('./home')
                 })
-        }
+        }  
     }
     handleChange = (prop, val) => {
         this.setState({ [prop]: val })
@@ -136,7 +136,7 @@ class Auth extends Component {
     //     .catch(err => {
     //         console.log(err)
     //     })
-    // }
+    // }  
     login = () => {
         const { username, password } = this.state;
         axios.post("/auth/login", { username, password })

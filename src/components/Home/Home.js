@@ -130,7 +130,7 @@ class Home extends Component {
                                 e.stopPropagation()
                                 this.editCard(item.card_id)
                             }} style={styles.trashcan} type="button" class="btn btn-default btn-sm">
-                               <span class="glyphicon glyphicon-pencil"></span>
+                               <Link to="/card"><span class="glyphicon glyphicon-pencil"></span></Link>
                             </button>
                         </td>
                         </tr>

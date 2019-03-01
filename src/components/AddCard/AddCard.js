@@ -296,10 +296,10 @@ class AddCard extends Component {
                                             </div>
                                             <div style={{ display: 'flex', justifyContent: 'center', paddingTop: '3%' }}>
                                                 <ul style={{ display: 'flex', listStyleType: 'none' }}>
-                                                    {/* <li><i style={{ color: '#1aa3ff', fontSize: 20 }} className="fas fa-search"></i></li> */}
-                                                    {/* <li><i style={{ color: '#1aa3ff', fontSize: 20, paddingLeft: 10 }} className="fas fa-sync-alt"></i></li> */}
-                                                    {/* <li><i style={{ color: '#1aa3ff', fontSize: 20, paddingLeft: 10 }} className="fas fa-camera-retro"></i></li> */}
-                                                    {/* <li><i style={{ color: '#1aa3ff', fontSize: 20, paddingLeft: 10 }} className="fas fa-upload"></i></li> */}
+                                                    <li><i style={{ color: '#1aa3ff', fontSize: 20 }} className="fas fa-search"></i></li>
+                                                    <li><i style={{ color: '#1aa3ff', fontSize: 20, paddingLeft: 10 }} className="fas fa-sync-alt"></i></li>
+                                                    <li><i style={{ color: '#1aa3ff', fontSize: 20, paddingLeft: 10 }} className="fas fa-camera-retro"></i></li>
+                                                    <li><i style={{ color: '#1aa3ff', fontSize: 20, paddingLeft: 10 }} className="fas fa-upload"></i></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -326,15 +326,15 @@ class AddCard extends Component {
                                                 </div>
                                             </div>
                                             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                                                {/* <i style={{ color: '#1aa3ff', fontSize: 50, position: 'absolute' }} className="fas fa-plus"></i> */}
+                                                <i style={{ color: '#1aa3ff', fontSize: 50, position: 'absolute' }} className="fas fa-plus"></i>
                                                 <img src={`${process.env.PUBLIC_URL}/assets/images/backupload.png`} alt="" />
                                             </div>
                                             <div style={{ display: 'flex', justifyContent: 'center', paddingTop: '3%' }}>
                                                 <ul style={{ display: 'flex', listStyleType: 'none' }}>
-                                                    {/* <li><i style={{ color: '#1aa3ff', fontSize: 20 }} className="fas fa-search"></i></li>
+                                                    <li><i style={{ color: '#1aa3ff', fontSize: 20 }} className="fas fa-search"></i></li>
                                                     <li><i style={{ color: '#1aa3ff', fontSize: 20, paddingLeft: 10 }} className="fas fa-sync-alt"></i></li>
                                                     <li><i style={{ color: '#1aa3ff', fontSize: 20, paddingLeft: 10 }} className="fas fa-camera-retro"></i></li>
-                                                    <li><i style={{ color: '#1aa3ff', fontSize: 20, paddingLeft: 10 }} className="fas fa-upload"></i></li> */}
+                                                    <li><i style={{ color: '#1aa3ff', fontSize: 20, paddingLeft: 10 }} className="fas fa-upload"></i></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -346,12 +346,12 @@ class AddCard extends Component {
                                             <div>
                                                 <div style={{ display: 'flex', alignItems: 'end' }}>
                                                     <p style={styles.titleTxt5}>Player Name</p>
-                                                    {/* <i style={styles.arrowDown} className="fas fa-caret-down"></i> */}
+                                                    <i style={styles.arrowDown} className="fas fa-caret-down"></i>
                                                 </div>
                                                 <InputBoxes val={this.state.CardValues[0]} updateFn={this.updateCategory}/>
                                                 <div style={{ display: 'flex', alignItems: 'end' }}>
                                                     <p style={styles.titleTxt5}>Card Year</p>
-                                                    {/* <i style={styles.arrowDown} className="fas fa-caret-down"></i> */}
+                                                    <i style={styles.arrowDown} className="fas fa-caret-down"></i>
                                                 </div>
                                                 <InputBoxes val={this.state.CardValues[1]} updateFn={this.updateCategory}/>
                                             </div>
@@ -374,7 +374,7 @@ class AddCard extends Component {
                                             <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
                                                 <div style={{ display: 'flex' }}>
                                                     <p style={styles.text}>no action</p>
-                                                    <img src={`${process.env.PUBLIC_URL}/assets/images/ebay.png`} alt="" />
+                                                    <img src='https://github.com/sunderbean/cardklout/blob/master/public/assets/images/ebay.png?raw=true' alt="" style={{cursor: 'pointer'}} />
                                                 </div>
                                             </div>
                                             <div style={{ display: 'flex', alignItems: 'baseline' }}>
@@ -393,31 +393,26 @@ class AddCard extends Component {
                                         <div style={{ display: 'flex', alignItems: 'end' }}>
                                             <p style={styles.titleTxt5}>Team</p>
                                             {/* <InputBoxes /> */}
-                                            {/* <i style={styles.arrowDown} className="fas fa-caret-down"></i> */}
+                                            <i style={styles.arrowDown} className="fas fa-caret-down"></i>
                                             
                                         </div>
                                         <InputBoxes val={this.state.CardValues[2]} updateFn={this.updateCategory} />
-                                         {/* <div style={{ display: 'flex', alignItems: 'end' }}>
-                                            <p style={styles.titleTxt5}>Manufacture</p>
-                                            <i style={styles.arrowDown} className="fas fa-caret-down"></i>
-                                        </div> */}
-                                        {/* <InputBoxes val={this.state.CardValues[3]} updateFn={this.updateCategory} /> */}
                                         <div style={{ display: 'flex', alignItems: 'end' }}>
                                             <p style={styles.titleTxt5}>Brand</p>
-                                            {/* <i style={styles.arrowDown} className="fas fa-caret-down"></i> */}
+                                            <i style={styles.arrowDown} className="fas fa-caret-down"></i>
                                         </div>
                                         <InputBoxes val={this.state.CardValues[3]} updateFn={this.updateCategory} />
                                         <div style={{ display: 'flex', alignItems: 'end' }}>
                                             <p style={styles.titleTxt5}>Sport</p>
-                                            {/* <i style={styles.arrowDown} className="fas fa-caret-down"></i> */}
+                                            <i style={styles.arrowDown} className="fas fa-caret-down"></i>
                                         </div>
                                         <InputBoxes val={this.state.CardValues[4]} updateFn={this.updateCategory}/>
                                         <div style={{ display: 'flex', alignItems: 'end' }}>
                                             <p style={styles.titleTxt5}>Position</p>
-                                            {/* <i style={styles.arrowDown} className="fas fa-caret-down"></i> */}
+                                            <i style={styles.arrowDown} className="fas fa-caret-down"></i>
                                         </div>
                                         <InputBoxes val={this.state.CardValues[5]} updateFn={this.updateCategory} />
-                                        {/* <i style={{ color: '#1aa3ff', fontSize: 30, paddingTop: 10 }} className="fas fa-plus-circle"></i> */}
+                                        <i style={{ color: '#1aa3ff', fontSize: 30, paddingTop: 10 }} className="fas fa-plus-circle"></i>
                                         <div style={{display: 'flex', alignItems:'end'}}>
                                             <p style={styles.titleTxt5}>Condition</p>
                                         </div>

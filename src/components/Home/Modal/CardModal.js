@@ -86,6 +86,8 @@ const styles = {
 class CardModal extends Component {
     render() {
         const { card_id, player_name, sport, year, team, manufacturer, brand, condition, clout, position, front_url, back_url} = this.props.modalCard
+        console.log(111111111, front_url, back_url)
+        const {url} = "https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2380057.m570.l1311.R1.TR3.TRC0.A0.H0.Xjim+rice+base.TRS0&_nkw=jim+rice+baseball+cards&_sacat=0"
         return (
             <div>
                 {/* <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/> */}
@@ -96,7 +98,7 @@ class CardModal extends Component {
                         {/* <button style={{position: 'absolute'}} type="button" class="close" aria-label="Close" onClick={() => this.props.toggleCardModal()}>
                             <span aria-hidden="true">&times;</span>
                         </button> */}
-                        <button style={{position: 'absolute', color: 'grey', border: 'none', left: 8}} type="button" class="btn btn-default btn-sm" onClick={() => this.props.toggleCardModal()}>
+                        <button style={{position: 'absolute', color: 'grey', border: 'none', left: 6}} type="button" class="btn btn-default btn-sm" onClick={() => this.props.toggleCardModal()}>
                             <span class="glyphicon glyphicon-remove"></span> 
                         </button>
                     </div>
@@ -146,7 +148,7 @@ class CardModal extends Component {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> 
                 </div>
                 <div className="container-fluid">
                     <div className="row" style={styles.bg}>
@@ -157,6 +159,20 @@ class CardModal extends Component {
                                         <div style={{paddingLeft: 10}}>
                                             <p style={styles.titleTxt5}>Front</p>
                                         </div>
+                                            <img src={front_url} style={{
+                                                        position: 'relative',
+                                                        width: 160,
+                                                        height: 210,
+                                                        borderWidth: 10,
+                                                        margin: '20px auto',
+                                                        borderColor: 'rgb(102, 102, 102)',
+                                                        border: 'red',
+                                                        borderRadius: 5,
+                                                        display: 'flex',
+                                                        justifyContent: 'center',
+                                                        alignItems: 'center',
+                                                        fontSize: 28
+                                                    }}/>
                                         <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                                             {/* <i style={{color: '#1aa3ff', fontSize: 50, position: 'absolute'}} className="fas fa-plus"></i> */}
                                             <img src={`${process.env.PUBLIC_URL}/assets/images/jimrice-front.png`} alt=""/>
@@ -174,6 +190,20 @@ class CardModal extends Component {
                                         <div style={{paddingLeft: 10}}>
                                             <p style={styles.titleTxt5}>Back</p>
                                         </div>
+                                        <img src={back_url} style={{
+                                                        position: 'relative',
+                                                        width: 160,
+                                                        height: 210,
+                                                        borderWidth: 10,
+                                                        margin: '20px auto',
+                                                        borderColor: 'rgb(102, 102, 102)',
+                                                        border: 'red',
+                                                        borderRadius: 5,
+                                                        display: 'flex',
+                                                        justifyContent: 'center',
+                                                        alignItems: 'center',
+                                                        fontSize: 28
+                                                    }}/>
                                         <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                                             {/* <i style={{color: '#1aa3ff', fontSize: 50, position:'absolute'}} className="fas fa-plus"></i> */}
                                             <img src={`${process.env.PUBLIC_URL}/assets/images/jimrice-back.png`} alt=""/>
@@ -225,7 +255,8 @@ class CardModal extends Component {
                                         <div style={{display: 'flex', justifyContent: 'flex-end'}}>
                                             <div style={{display: 'flex'}}>
                                                 <p style={styles.text}>no action</p>
-                                                <img src={`${process.env.PUBLIC_URL}/assets/images/ebay.png`} alt=""/>
+                                                <img src='https://github.com/sunderbean/cardklout/blob/master/public/assets/images/ebay.png?raw=true' alt="" style={{cursor: 'pointer'}} />
+                                                <a style={{backgroundColor: 'green'}} href={url}/>
                                             </div>
                                         </div>
                                         <div style={{display: 'flex', alignItems: 'baseline'}}>

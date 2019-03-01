@@ -153,23 +153,23 @@ class Auth extends Component {
             <div className="row">
                 <div className="col-sm-12" style={styles.bg}>
                     <div className="col-sm-3"></div>
-                    <div className="col-sm-6 mobile" style={{textAlign: 'center'}}>
-                        <div style={{display: 'block'}}>
+                    <div className="col-sm-6 mobile" style={{ textAlign: 'center' }}>
+                        <div style={{ display: 'block' }}>
                             <p className="title" style={styles.title}>CARDKLOUT</p>
                         </div>
                         <div className="col-sm-12 mobileForm" style={styles.bgLayer}>
-                            <div className="col-sm-6 form1" style={{borderRight: '1px solid #ffffff'}}>
+                            <div className="col-sm-6 form1" style={{ borderRight: '1px solid #ffffff' }}>
                                 <p style={styles.bgLayerTitle}>Login</p>
                                 <form style={styles.formGroup}>
                                     <div className="form-group">
-                                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="USERNAME/EMAIL" style={{height: '5vh'}} onChange={e => this.handleChange("username", e.target.value)}/>
+                                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="USERNAME/EMAIL" style={{ height: '5vh' }} onChange={e => this.handleChange("username", e.target.value)} />
                                     </div>
                                     <div className="form-group">
-                                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="PASSWORD" style={{height: '5vh'}} onChange={e => this.handleChange("password", e.target.value)}/>
+                                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="PASSWORD" style={{ height: '5vh' }} onChange={e => this.handleChange("password", e.target.value)} />
                                     </div>
                                     <div className="form-check" style={styles.checkBox}>
                                         <input type="checkbox" className="form-check-input" id="exampleCheck1" />
-                                        <label style={{fontSize: 12}} className="form-check-label" htmlFor="exampleCheck1">keep me signed in</label>
+                                        <label style={{ fontSize: 12 }} className="form-check-label" htmlFor="exampleCheck1">keep me signed in</label>
                                     </div>
                                     <button type="button" style={styles.btn} className="btn btn-primary" onClick={this.login}>LOG IN</button>
                                 </form>

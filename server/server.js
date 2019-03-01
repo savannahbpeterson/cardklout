@@ -9,10 +9,10 @@ const UDCtrl = require('./controllers/userDataController')
 const AddCtrl = require('./controllers/addCardController')
 const amazonCrtl = require('./controllers/amazonController')
 
-require('dotenv').config({path: path.join(__dirname, "../.env")});
+require('dotenv').config({ path: path.join(__dirname, "../.env") });
 const app = express()
 
-const {SERVER_PORT, SESSION_SECRET, CONNECTION_STRING} = process.env
+const { SERVER_PORT, SESSION_SECRET, CONNECTION_STRING } = process.env
 
 massive(CONNECTION_STRING).then(db => {
     app.set('db', db)
@@ -21,20 +21,20 @@ massive(CONNECTION_STRING).then(db => {
 
 app.use(bodyParser.json())
 app.use(session({
-  secret: SESSION_SECRET,
-  resave: false,
-  saveUninitialized: false,
-  maxAge: null
+    secret: SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    maxAge: null
 }))
 
-app.use( express.static( `${__dirname}/../build` ) );
+app.use(express.static(`${__dirname}/../build`));
 
 //AUTHENTICATION
 app.post("/auth/login", authCtrl.login);
 app.get('/api/user', authCtrl.getUser);
 app.put("/auth/logout", authCtrl.logout);
 
-//USERS DATA (CARDS)
+//USERS DATA (CARDS) 
 app.get('/home/getUserCards', UDCtrl.getUserCards);
 app.delete('/api/delete/:id', UDCtrl.deleteCard)
 app.put('/home/edit', UDCtrl.editCard)
